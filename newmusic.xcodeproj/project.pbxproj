@@ -7,21 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB800721ADC9BE0045DD14 /* Extensions.swift */; };
+		D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */; };
 		D8F076CF219F841200E08006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F076CE219F841200E08006 /* AppDelegate.swift */; };
-		D8F076D1219F841200E08006 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F076D0219F841200E08006 /* ViewController.swift */; };
+		D8F076D1219F841200E08006 /* TimelineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F076D0219F841200E08006 /* TimelineVC.swift */; };
 		D8F076D4219F841200E08006 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F076D2219F841200E08006 /* Main.storyboard */; };
 		D8F076D6219F841300E08006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8F076D5219F841300E08006 /* Assets.xcassets */; };
 		D8F076D9219F841300E08006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F076D7219F841300E08006 /* LaunchScreen.storyboard */; };
+		FB01181637F74C20E6B3C422 /* Pods_newmusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D118CE7442EE3ECF808986CA /* Pods_newmusic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C9A7B7C8642597BD862FE6B /* Pods-newmusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-newmusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-newmusic/Pods-newmusic.release.xcconfig"; sourceTree = "<group>"; };
+		D118CE7442EE3ECF808986CA /* Pods_newmusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_newmusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8AB800721ADC9BE0045DD14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		D8F076CB219F841200E08006 /* newmusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newmusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F076CE219F841200E08006 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8F076D0219F841200E08006 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D8F076D0219F841200E08006 /* TimelineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineVC.swift; sourceTree = "<group>"; };
 		D8F076D3219F841200E08006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8F076D5219F841300E08006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8F076D8219F841300E08006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8F076DA219F841300E08006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDC282E35A3900AB52C46CC3 /* Pods-newmusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-newmusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-newmusic/Pods-newmusic.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB01181637F74C20E6B3C422 /* Pods_newmusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A20B8446606E788C02F522AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D118CE7442EE3ECF808986CA /* Pods_newmusic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8AB800621ADC9A90045DD14 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D8AB800721ADC9BE0045DD14 /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		D8F076C2219F841200E08006 = {
 			isa = PBXGroup;
 			children = (
 				D8F076CD219F841200E08006 /* newmusic */,
 				D8F076CC219F841200E08006 /* Products */,
+				DE834E9AB7632F57D91B66C5 /* Pods */,
+				A20B8446606E788C02F522AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +82,24 @@
 			isa = PBXGroup;
 			children = (
 				D8F076CE219F841200E08006 /* AppDelegate.swift */,
-				D8F076D0219F841200E08006 /* ViewController.swift */,
+				D8F076D0219F841200E08006 /* TimelineVC.swift */,
+				D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */,
 				D8F076D2219F841200E08006 /* Main.storyboard */,
 				D8F076D5219F841300E08006 /* Assets.xcassets */,
 				D8F076D7219F841300E08006 /* LaunchScreen.storyboard */,
 				D8F076DA219F841300E08006 /* Info.plist */,
+				D8AB800621ADC9A90045DD14 /* Utils */,
 			);
 			path = newmusic;
+			sourceTree = "<group>";
+		};
+		DE834E9AB7632F57D91B66C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DDC282E35A3900AB52C46CC3 /* Pods-newmusic.debug.xcconfig */,
+				5C9A7B7C8642597BD862FE6B /* Pods-newmusic.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +109,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8F076DD219F841300E08006 /* Build configuration list for PBXNativeTarget "newmusic" */;
 			buildPhases = (
+				6508432EE729C0C263EF8695 /* [CP] Check Pods Manifest.lock */,
 				D8F076C7219F841200E08006 /* Sources */,
 				D8F076C8219F841200E08006 /* Frameworks */,
 				D8F076C9219F841200E08006 /* Resources */,
+				DAC28F2A634AD9E3F372CEE8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +170,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6508432EE729C0C263EF8695 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-newmusic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAC28F2A634AD9E3F372CEE8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-newmusic/Pods-newmusic-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-newmusic/Pods-newmusic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D8F076C7219F841200E08006 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8F076D1219F841200E08006 /* ViewController.swift in Sources */,
+				D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */,
+				D8F076D1219F841200E08006 /* TimelineVC.swift in Sources */,
 				D8F076CF219F841200E08006 /* AppDelegate.swift in Sources */,
+				D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -268,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -280,11 +361,13 @@
 		};
 		D8F076DE219F841300E08006 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDC282E35A3900AB52C46CC3 /* Pods-newmusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ABY9B75BK3;
 				INFOPLIST_FILE = newmusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,11 +381,13 @@
 		};
 		D8F076DF219F841300E08006 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C9A7B7C8642597BD862FE6B /* Pods-newmusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ABY9B75BK3;
 				INFOPLIST_FILE = newmusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
