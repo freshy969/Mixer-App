@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDEC421AE56540007ACBC /* MenuVC.swift */; };
 		D87FDEC821AE582B0007ACBC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDEC721AE582B0007ACBC /* HomeVC.swift */; };
+		D87FDED221AEEC3A0007ACBC /* CustomMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */; };
+		D87FDED421AEF0DF0007ACBC /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED321AEF0DF0007ACBC /* SpacerView.swift */; };
 		D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB800721ADC9BE0045DD14 /* Extensions.swift */; };
 		D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */; };
 		D8F076CF219F841200E08006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F076CE219F841200E08006 /* AppDelegate.swift */; };
@@ -23,6 +25,8 @@
 		D118CE7442EE3ECF808986CA /* Pods_newmusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_newmusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87FDEC421AE56540007ACBC /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		D87FDEC721AE582B0007ACBC /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = "../../../../../../../../Downloads/Newmusic-App-master/newmusic/HomeVC.swift"; sourceTree = "<group>"; };
+		D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuHeaderView.swift; sourceTree = "<group>"; };
+		D87FDED321AEF0DF0007ACBC /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
 		D8AB800721ADC9BE0045DD14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		D8F076CB219F841200E08006 /* newmusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newmusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +75,15 @@
 			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
+		D87FDED021AEEC1A0007ACBC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */,
+				D87FDED321AEF0DF0007ACBC /* SpacerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D8AB800621ADC9A90045DD14 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +113,7 @@
 		D8F076CD219F841200E08006 /* newmusic */ = {
 			isa = PBXGroup;
 			children = (
+				D87FDED021AEEC1A0007ACBC /* Views */,
 				D87FDEC321AE562A0007ACBC /* Controllers */,
 				D87FDEC621AE56A40007ACBC /* Custom Cells */,
 				D8F076CE219F841200E08006 /* AppDelegate.swift */,
@@ -233,7 +247,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87FDED421AEF0DF0007ACBC /* SpacerView.swift in Sources */,
 				D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */,
+				D87FDED221AEEC3A0007ACBC /* CustomMenuHeaderView.swift in Sources */,
 				D8F076CF219F841200E08006 /* AppDelegate.swift in Sources */,
 				D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */,
 				D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */,
