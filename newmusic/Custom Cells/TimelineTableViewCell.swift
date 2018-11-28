@@ -19,31 +19,30 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var userButton: UIButton!
     
+    
+    @IBOutlet weak var profilePictureImageView: UIImageView!
+    @IBOutlet weak var profilePictureView: UIView!
+    @IBOutlet weak var usernameButtonLabel: UIButton!
+    @IBOutlet weak var playlistNameButtonLabel: UIButton!
+    @IBOutlet weak var songNameButtonLabel: UIButton!
+    @IBOutlet weak var artistNameButtonLabel: UIButton!
+    
     func setupCardUI() {
-        
-        //let gradient = getCircleGradient() // function is currently way too slow to use
-        
-        let averageColorFromImage = AverageColorFromImage(image: albumImage.image!)
         
         likeButton.layer.cornerRadius = likeButton.frame.size.width / 2
         likeButton.clipsToBounds = true
-        likeButton.backgroundColor = averageColorFromImage
         
         addButton.layer.cornerRadius = likeButton.frame.size.width / 2
         addButton.clipsToBounds = true
-        addButton.backgroundColor = averageColorFromImage
         
         queueButton.layer.cornerRadius = likeButton.frame.size.width / 2
         queueButton.clipsToBounds = true
-        queueButton.backgroundColor = averageColorFromImage
         
         playButton.layer.cornerRadius = likeButton.frame.size.width / 2
         playButton.clipsToBounds = true
-        playButton.backgroundColor = averageColorFromImage
         
         userButton.layer.cornerRadius = likeButton.frame.size.width / 2
         userButton.clipsToBounds = true
-        userButton.backgroundColor = averageColorFromImage
         
         albumImage.layer.cornerRadius = 20
         albumImage.clipsToBounds = true
@@ -56,6 +55,17 @@ class TimelineTableViewCell: UITableViewCell {
         card.layer.shadowRadius = 10
         card.layer.shadowOpacity = 0.6
         card.layer.shadowColor = UIColor.gray.cgColor
+    }
+    
+    func applyAverageColor() {
+        //let gradient = getCircleGradient() // function is currently way too slow to use
+        let averageColorFromImage = AverageColorFromImage(image: albumImage.image!)
+        
+        likeButton.backgroundColor = averageColorFromImage
+        addButton.backgroundColor = averageColorFromImage
+        queueButton.backgroundColor = averageColorFromImage
+        playButton.backgroundColor = averageColorFromImage
+        userButton.backgroundColor = averageColorFromImage
     }
     
     func animateImage() { // call during seugue ?

@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDEC421AE56540007ACBC /* MenuVC.swift */; };
+		D87FDEC821AE582B0007ACBC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDEC721AE582B0007ACBC /* HomeVC.swift */; };
 		D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB800721ADC9BE0045DD14 /* Extensions.swift */; };
 		D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */; };
 		D8F076CF219F841200E08006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F076CE219F841200E08006 /* AppDelegate.swift */; };
-		D8F076D1219F841200E08006 /* TimelineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F076D0219F841200E08006 /* TimelineVC.swift */; };
 		D8F076D4219F841200E08006 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F076D2219F841200E08006 /* Main.storyboard */; };
 		D8F076D6219F841300E08006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8F076D5219F841300E08006 /* Assets.xcassets */; };
 		D8F076D9219F841300E08006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F076D7219F841300E08006 /* LaunchScreen.storyboard */; };
@@ -20,11 +21,12 @@
 /* Begin PBXFileReference section */
 		5C9A7B7C8642597BD862FE6B /* Pods-newmusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-newmusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-newmusic/Pods-newmusic.release.xcconfig"; sourceTree = "<group>"; };
 		D118CE7442EE3ECF808986CA /* Pods_newmusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_newmusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D87FDEC421AE56540007ACBC /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		D87FDEC721AE582B0007ACBC /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = "../../../../../../../../Downloads/Newmusic-App-master/newmusic/HomeVC.swift"; sourceTree = "<group>"; };
 		D8AB800721ADC9BE0045DD14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		D8F076CB219F841200E08006 /* newmusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newmusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F076CE219F841200E08006 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8F076D0219F841200E08006 /* TimelineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineVC.swift; sourceTree = "<group>"; };
 		D8F076D3219F841200E08006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8F076D5219F841300E08006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8F076D8219F841300E08006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,6 +52,23 @@
 				D118CE7442EE3ECF808986CA /* Pods_newmusic.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D87FDEC321AE562A0007ACBC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D87FDEC721AE582B0007ACBC /* HomeVC.swift */,
+				D87FDEC421AE56540007ACBC /* MenuVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D87FDEC621AE56A40007ACBC /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */,
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		D8AB800621ADC9A90045DD14 /* Utils */ = {
@@ -81,9 +100,9 @@
 		D8F076CD219F841200E08006 /* newmusic */ = {
 			isa = PBXGroup;
 			children = (
+				D87FDEC321AE562A0007ACBC /* Controllers */,
+				D87FDEC621AE56A40007ACBC /* Custom Cells */,
 				D8F076CE219F841200E08006 /* AppDelegate.swift */,
-				D8F076D0219F841200E08006 /* TimelineVC.swift */,
-				D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */,
 				D8F076D2219F841200E08006 /* Main.storyboard */,
 				D8F076D5219F841300E08006 /* Assets.xcassets */,
 				D8F076D7219F841300E08006 /* LaunchScreen.storyboard */,
@@ -215,9 +234,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */,
-				D8F076D1219F841200E08006 /* TimelineVC.swift in Sources */,
 				D8F076CF219F841200E08006 /* AppDelegate.swift in Sources */,
 				D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */,
+				D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */,
+				D87FDEC821AE582B0007ACBC /* HomeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
