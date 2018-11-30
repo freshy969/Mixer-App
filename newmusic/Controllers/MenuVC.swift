@@ -8,12 +8,23 @@
 
 import UIKit
 
+struct MenuItem {
+    let icon: UIImage
+    let title: String
+}
+
 class MenuVC: UITableViewController {
+    
+    let menuItems = [
+        MenuItem(icon: UIImage(named: "favelist")!, title: "Your Top 10"),
+        MenuItem(icon: UIImage(named: "playlist")!, title: "Playlists"),
+        MenuItem(icon: UIImage(named: "queueGray")!, title: "Queue"),
+        MenuItem(icon: UIImage(named: "addGray")!, title: "Add a Song")
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = .blue
-
+        tableView.separatorStyle = .none
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -26,13 +37,24 @@ class MenuVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return menuItems.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cellId")
-        cell.textLabel?.text = "Menu Item Row: \(indexPath.row)"
+        let cell = MenuItemCell(style: .default, reuseIdentifier: "cellId")
+        let menuItem = menuItems[indexPath.row]
+        cell.iconImageView.image = menuItem.icon
+        cell.titleLabel.text = menuItem.title
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 
 }
