@@ -12,9 +12,9 @@ import ChameleonFramework
 class Card: UIView {
 
     let albumImage = AlbumImageView()
-    let likeButton = PostActionButtonView()
     let addButton = PostActionButtonView()
     let queueButton = OffCenteredButtonView()
+    let sendButton = PostActionButtonView()
     let playButton = OffCenteredButtonView()
     
     let profilePictureButton = PostProfileImageView()
@@ -64,9 +64,9 @@ class Card: UIView {
 
     fileprivate func setupButtonComponents() {
         
-        likeButton.buttonIcon.setImage(UIImage(named: "heartWhiteUnfilled"), for: .normal)
-        addButton.buttonIcon.setImage(UIImage(named: "addWhiteUnfilled")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        addButton.buttonIcon.setImage(UIImage(named: "addWhiteUnfilled"), for: .normal)
         queueButton.buttonIcon.setImage(UIImage(named: "queueWhiteUnfilled")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        sendButton.buttonIcon.setImage(UIImage(named: "sendWhite")?.withRenderingMode(.alwaysOriginal), for: .normal)
         playButton.buttonIcon.setImage(UIImage(named: "playButtonWhite")?.withRenderingMode(.alwaysOriginal), for: .normal)
         
         profilePictureButton.contentMode = .scaleAspectFit
@@ -82,6 +82,8 @@ class Card: UIView {
     }
     
     func setupCardComponents() {
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 20
         self.backgroundColor = UIColor.white
         self.layer.shadowRadius = 10
@@ -93,76 +95,42 @@ class Card: UIView {
         //let gradient = getCircleGradient() // function is currently way too slow to use
         let averageColorFromImage = AverageColorFromImage(image: albumImage.image!)
         
-        likeButton.backgroundColor = averageColorFromImage
         addButton.backgroundColor = averageColorFromImage
         queueButton.backgroundColor = averageColorFromImage
+        sendButton.backgroundColor = averageColorFromImage
         playButton.backgroundColor = averageColorFromImage
         // profilePictureButton.backgroundColor = averageColorFromImage
     }
     
     fileprivate func setupStackView() {
         
-        let userArrangedSubviews = [SpacerViewHeight(space: 1),
-                                    usernameButtonLabel,
-                                    playlistNameButtonLabel]
-        let userInfoStackView = UIStackView(arrangedSubviews: userArrangedSubviews)
-        userInfoStackView.spacing = 1
-        userInfoStackView.axis = .vertical
-
-        let topArrangedSubview = [userInfoStackView, UIView(), profilePictureButton]
-        let topStackView = UIStackView(arrangedSubviews: topArrangedSubview)
-        topStackView.spacing = 1
+        addSubview(usernameButtonLabel)
+        addSubview(playlistNameButtonLabel)
+        addSubview(profilePictureButton)
+        addSubview(albumImage)
+        addSubview(songNameButtonLabel)
+        addSubview(artistNameButtonLabel)
+        addSubview(addButton)
+        addSubview(queueButton)
+        addSubview(sendButton)
+        addSubview(likeTotalButtonLabel)
+        addSubview(playButton)
         
-        let albumImageArrangedSubview = [SpacerViewWidth(space: 25), albumImage, SpacerViewWidth(space: 25)]
-        let albumStackView = UIStackView(arrangedSubviews: albumImageArrangedSubview)
-        albumStackView.spacing = 1
-        albumStackView.distribution = .fillProportionally
-
-        let arrangedSubviewWithAlbum = [topStackView,
-                                        SpacerViewHeight(space: 33.5),
-                                        albumStackView,
-                                        UIView()]
-        let stackViewWithAlbum = UIStackView(arrangedSubviews: arrangedSubviewWithAlbum)
-        stackViewWithAlbum.axis = .vertical
-        stackViewWithAlbum.spacing = 1
-
-        let arrangedSubviewOfActionButtons = [likeButton, SpacerViewWidth(space: 4), addButton, SpacerViewWidth(space: 4), queueButton, UIView()]
-        let stackViewOfActionButtons = UIStackView(arrangedSubviews: arrangedSubviewOfActionButtons)
-        stackViewOfActionButtons.spacing = 1
-
-        let bottomLeftSubview = [songNameButtonLabel,
-                                              artistNameButtonLabel,
-                                              SpacerViewHeight(space: 5),
-                                              stackViewOfActionButtons]
-        let bottomLeftStackView = UIStackView(arrangedSubviews: bottomLeftSubview)
-        bottomLeftStackView.axis = .vertical
-        bottomLeftStackView.spacing = 1
-        
-        let bottomRightArrangedSubview = [UIView(), playButton]
-        let bottomRightStackView = UIStackView(arrangedSubviews: bottomRightArrangedSubview)
-        bottomRightStackView.axis = .vertical
-        bottomRightStackView.spacing = 1
-        
-        let bottomArrangedSubview = [bottomLeftStackView, UIView(), bottomRightStackView]
-        let bottomStackView = UIStackView(arrangedSubviews: bottomArrangedSubview)
-        bottomStackView.spacing = 1
-        // bottomStackView.distribution = .fillProportionally
-        
-        let arrangedSubviewOfPost = [stackViewWithAlbum,
-                                     bottomStackView]
-        let postStackView = UIStackView(arrangedSubviews: arrangedSubviewOfPost)
-        postStackView.axis = .vertical
-        self.addSubview(postStackView)
-        postStackView.translatesAutoresizingMaskIntoConstraints = false
-        postStackView.spacing = 1
-        postStackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        postStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        postStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        postStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        postStackView.isLayoutMarginsRelativeArrangement = true
-        postStackView.layoutMargins = UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20)
+        usernameButtonLabel.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 20, paddingBottom: 10, paddingRight: 50, width: 246, height: 17)
+        playlistNameButtonLabel.anchor(top: usernameButtonLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 50, width: 246, height: 27)
+        profilePictureButton.anchor(top: self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 20, width: 48, height: 48)
+        albumImage.anchor(top: playlistNameButtonLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 250, height: 250)
+        albumImage.centerXAnchor.constraint(lessThanOrEqualTo: albumImage.superview!.centerXAnchor).isActive = true
+        songNameButtonLabel.anchor(top: albumImage.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 20, paddingBottom: 10, paddingRight: 0, width: 241, height: 17)
+        artistNameButtonLabel.anchor(top: songNameButtonLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 241, height: 17)
+        addButton.anchor(top: artistNameButtonLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 20, paddingBottom: 20, paddingRight: 5, width: 30, height: 30)
+        queueButton.anchor(top: artistNameButtonLabel.bottomAnchor, left: addButton.rightAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 5, paddingBottom: 20, paddingRight: 5, width: 30, height: 30)
+        sendButton.anchor(top: artistNameButtonLabel.bottomAnchor, left: queueButton.rightAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 5, paddingBottom: 20, paddingRight: 5, width: 30, height: 30)
+        likeTotalButtonLabel.anchor(top: albumImage.bottomAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 35, paddingLeft: 5, paddingBottom: 0, paddingRight: 20, width: 70, height: 17)
+        playButton.anchor(top: likeTotalButtonLabel.bottomAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 20, paddingRight: 20, width: 30, height: 30)
 
     }
+
     
     func animateImage() { // call during seugue ?
         // perform animation for card when tapped

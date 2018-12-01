@@ -21,19 +21,9 @@ class TimelineTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // now need to place the card in a certain position in the cell
     fileprivate func setupCard() {
-        let stackView = UIStackView(arrangedSubviews: [card])
-        addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 12
+        addSubview(card)
         
-        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
-        stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 25, left: 20, bottom: 25, right: 20)
+        card.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 335, height: 435)
     }
 }
