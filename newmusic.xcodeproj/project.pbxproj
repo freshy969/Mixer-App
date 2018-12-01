@@ -18,6 +18,7 @@
 		D8840D6E21B2260200B858CD /* TopTenPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8840D6D21B2260200B858CD /* TopTenPlaylistVC.swift */; };
 		D8840D7021B2261D00B858CD /* QueueListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8840D6F21B2261D00B858CD /* QueueListVC.swift */; };
 		D8840D7221B2268800B858CD /* AddSongVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8840D7121B2268800B858CD /* AddSongVC.swift */; };
+		D8840D7621B25FD100B858CD /* DetailMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8840D7521B25FD100B858CD /* DetailMenuVC.swift */; };
 		D886FD2121B1A00100935D04 /* PlaylistListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D886FD2021B1A00100935D04 /* PlaylistListVC.swift */; };
 		D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB800721ADC9BE0045DD14 /* Extensions.swift */; };
 		D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */; };
@@ -47,6 +48,7 @@
 		D8840D6D21B2260200B858CD /* TopTenPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenPlaylistVC.swift; sourceTree = "<group>"; };
 		D8840D6F21B2261D00B858CD /* QueueListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueListVC.swift; sourceTree = "<group>"; };
 		D8840D7121B2268800B858CD /* AddSongVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongVC.swift; sourceTree = "<group>"; };
+		D8840D7521B25FD100B858CD /* DetailMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuVC.swift; sourceTree = "<group>"; };
 		D886FD2021B1A00100935D04 /* PlaylistListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListVC.swift; sourceTree = "<group>"; };
 		D8AB800721ADC9BE0045DD14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				D851302C21B0F93D0031FDF4 /* Base */,
 				D8E0745C21B032A200B47951 /* HomeVC.swift */,
 				D87FDEC421AE56540007ACBC /* MenuVC.swift */,
+				D8840D7521B25FD100B858CD /* DetailMenuVC.swift */,
 				D8840D6D21B2260200B858CD /* TopTenPlaylistVC.swift */,
 				D886FD2021B1A00100935D04 /* PlaylistListVC.swift */,
 				D8840D6F21B2261D00B858CD /* QueueListVC.swift */,
@@ -120,11 +123,11 @@
 			isa = PBXGroup;
 			children = (
 				D8E0745E21B0359E00B47951 /* Card.swift */,
+				D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */,
 				D8E0746421B0426F00B47951 /* PostActionButtonView.swift */,
 				D8E0746621B0443900B47951 /* ActionButtonImageView.swift */,
 				D851302A21B0E7FF0031FDF4 /* OffCenteredButtonView.swift */,
 				D8E0746821B0507A00B47951 /* PostProfileImageView.swift */,
-				D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */,
 				D87FDED521AEF5690007ACBC /* ProfileImageView.swift */,
 				D851302821B0C6580031FDF4 /* AlbumImageView.swift */,
 				D87FDED321AEF0DF0007ACBC /* SpacerView.swift */,
@@ -310,6 +313,7 @@
 				D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */,
 				D8E0746921B0507A00B47951 /* PostProfileImageView.swift in Sources */,
 				D87FDED821AEFECF0007ACBC /* MenuItemCell.swift in Sources */,
+				D8840D7621B25FD100B858CD /* DetailMenuVC.swift in Sources */,
 				D851302E21B0F9690031FDF4 /* BaseSlidingVC.swift in Sources */,
 				D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */,
 				D8E0746721B0443900B47951 /* ActionButtonImageView.swift in Sources */,

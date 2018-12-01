@@ -24,6 +24,6 @@ class TimelineTableViewCell: UITableViewCell {
     fileprivate func setupCard() {
         addSubview(card)
         
-        card.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 335, height: 435)
+        card.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 10, paddingRight: 20, width: 0, height: 435)
     }
 }

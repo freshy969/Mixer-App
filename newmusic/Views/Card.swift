@@ -38,7 +38,7 @@ class Card: UIView {
     }
     
     fileprivate func setupLabelComponents() {
-        usernameButtonLabel.textColor = UIColor.lightGray
+//        usernameButtonLabel.textColor = UIColor.lightGray
         usernameButtonLabel.textAlignment = .left
         usernameButtonLabel.font = UIFont.systemFont(ofSize: 13, weight: .medium)
 
@@ -78,7 +78,7 @@ class Card: UIView {
         albumImage.clipsToBounds = true
         albumImage.layer.shadowRadius = 10
         albumImage.layer.shadowOpacity = 0.6
-        albumImage.layer.shadowColor = UIColor.gray.cgColor
+//        albumImage.layer.shadowColor = UIColor.gray.cgColor
     }
     
     func setupCardComponents() {
@@ -95,11 +95,14 @@ class Card: UIView {
         //let gradient = getCircleGradient() // function is currently way too slow to use
         let averageColorFromImage = AverageColorFromImage(image: albumImage.image!)
         
+        usernameButtonLabel.textColor = averageColorFromImage
         addButton.backgroundColor = averageColorFromImage
         queueButton.backgroundColor = averageColorFromImage
         sendButton.backgroundColor = averageColorFromImage
         playButton.backgroundColor = averageColorFromImage
-        // profilePictureButton.backgroundColor = averageColorFromImage
+         profilePictureButton.backgroundColor = averageColorFromImage
+//        self.layer.shadowColor = averageColorFromImage.cgColor
+        albumImage.layer.shadowColor = averageColorFromImage.cgColor
     }
     
     fileprivate func setupStackView() {

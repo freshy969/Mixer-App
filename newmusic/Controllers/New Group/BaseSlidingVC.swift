@@ -29,7 +29,7 @@ class BaseSlidingVC: UIViewController {
     
     let coverView: CoverView = {
         let v = CoverView()
-        v.backgroundColor = UIColor(white: 1, alpha: 0.75)
+        v.backgroundColor = UIColor(white: 0, alpha: 0.15)
         v.alpha = 0
         v.translatesAutoresizingMaskIntoConstraints = false
         return v

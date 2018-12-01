@@ -13,7 +13,7 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     var profilePic = "joe"
     var username = "joelangenderfer" // Must capitalize
     var playlistNameArray = ["Coding Jams", "Pregame Songs", "Cheery EDM", "Chillout Vibes", "My Top 10", "Chillout Vibes"]
-    var songArray = ["Divide", "No Problem", "Winnebago"]
+    var songArray = ["Divide", "No Problem", "Winnebago", "Some Odesza Song", "Closer", "Some Odesza Song"]
     var artistArray = ["Odesza", "Chance the Rapper", "Gryffin", "Odesza", "The Chainsmokers", "Odesza"]
     var albumCoverArray = ["odesza", "chance", "winn", "odesza2", "chainsmokers", "odesza3"]
     
@@ -40,9 +40,53 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     
     fileprivate func setupNavigationBarItems() {
         navigationItem.title = "Your New Music"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(handleOpen))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Hide", style: .plain, target: self, action: #selector(handleHide))
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 19)]
+        setupCircularNavigationButton()
+        setupRightNavigationButton()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .heavy)]
+    }
+    
+    fileprivate func setupCircularNavigationButton() {
+        let image = UIImage(named: "joe")!.withRenderingMode(.alwaysOriginal)
+        let customView = UIButton(type: .system)
+        
+        customView.addTarget(self, action: #selector(handleOpen), for: .touchUpInside)
+        customView.setImage(image, for: .normal)
+        customView.imageView?.contentMode = .scaleAspectFit
+        
+        customView.layer.cornerRadius = 20
+        customView.clipsToBounds = true
+
+        customView.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        customView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        let barButtonItem = UIBarButtonItem(customView: customView)
+        navigationItem.leftBarButtonItem = barButtonItem
+    }
+    
+    fileprivate func setupRightNavigationButton() {
+        let image = UIImage(named: "sendBlack")!.withRenderingMode(.alwaysOriginal)
+        let customView = UIButton(type: .system)
+        
+        customView.addTarget(self, action: #selector(openMessages), for: .touchUpInside)
+        customView.setImage(image, for: .normal)
+        customView.imageView?.contentMode = .scaleAspectFit
+        
+        customView.clipsToBounds = true
+
+        customView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        customView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        let barButtonItem = UIBarButtonItem(customView: customView)
+        navigationItem.rightBarButtonItem = barButtonItem
+        
+    }
+    
+    @objc func openMessages() {
+        
+    }
+    
+    func hideCircularNavigationButton() {
+        navigationItem.leftBarButtonItem = nil
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

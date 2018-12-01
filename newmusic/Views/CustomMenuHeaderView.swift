@@ -15,11 +15,19 @@ class CustomMenuHeaderView: UIView {
     let statsLabel = UILabel()
     let profileImageView = ProfileImageView()
     
+    let settingsIcon: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "settingsGray")
+        iv.contentMode = .scaleAspectFit
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.white
         setupComponentProps()
-        setupStackView()
+        setupHeaderView()
     }
     
     fileprivate func setupComponentProps() {
@@ -31,6 +39,7 @@ class CustomMenuHeaderView: UIView {
         profileImageView.contentMode = .scaleAspectFit
         profileImageView.layer.cornerRadius = 54 / 2
         profileImageView.clipsToBounds = true
+        
         
         setupStatsAttributedText()
     }
@@ -45,30 +54,20 @@ class CustomMenuHeaderView: UIView {
         statsLabel.attributedText = attributedText
     }
     
-    fileprivate func setupStackView() {
-        let arrangedSubviews = [
-                                UIStackView(arrangedSubviews: [profileImageView, UIView()]),
-                                SpacerView(space: 4),
-                                nameLabel,
-                                usernameLabel,
-                                SpacerView(space: 16),
-                                statsLabel
-                               ]
+    fileprivate func setupHeaderView() {
+        addSubview(profileImageView)
+        addSubview(nameLabel)
+        addSubview(usernameLabel)
+        addSubview(statsLabel)
+        addSubview(settingsIcon)
         
-        let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
-        stackView.axis = .vertical
-        stackView.spacing = 3
+        profileImageView.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        nameLabel.anchor(top: profileImageView.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 12.5, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        usernameLabel.anchor(top: nameLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        statsLabel.anchor(top: usernameLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
-        stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
+        settingsIcon.anchor(top: self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 35, paddingLeft: 0, paddingBottom: 0, paddingRight: 12.5, width: 30, height: 30)
     }
     
     required init?(coder aDecoder: NSCoder) {

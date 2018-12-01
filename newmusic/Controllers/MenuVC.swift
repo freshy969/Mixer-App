@@ -30,6 +30,7 @@ class MenuVC: UITableViewController {
         MenuItem(icon: UIImage(named: "favelist")!, title: "Your Top 10"),
         MenuItem(icon: UIImage(named: "playlist")!, title: "Playlists"),
         MenuItem(icon: UIImage(named: "queueGray")!, title: "Queue"),
+        MenuItem(icon: UIImage(named: "searchGray")!, title: "Search"),
         MenuItem(icon: UIImage(named: "addGray")!, title: "Add a Song")
     ]
 
