@@ -127,16 +127,19 @@ class BaseSlidingVC: UIViewController {
         case 1:
             rightViewController = UINavigationController(rootViewController: TopTenPlaylistVC())
         case 2:
-            rightViewController = UINavigationController(rootViewController: PlaylistListVC())
+            rightViewController = UINavigationController(rootViewController: HotTenPlaylistVC())
         case 3:
-            rightViewController = UINavigationController(rootViewController: QueueListVC())
+            rightViewController = UINavigationController(rootViewController: PlaylistListVC())
         default:
-            
-            let tabBarController = UITabBarController()
-            let addSongController = AddSongVC()
-            tabBarController.viewControllers = [addSongController]
-            rightViewController = tabBarController
-            tabBarItem.title = "Add Song"
+            rightViewController = UINavigationController(rootViewController: QueueListVC())
+//        case 5:
+//            rightViewController = UINavigationController(rootViewController: SearchVC())
+//        default:
+//            let tabBarController = UITabBarController()
+//            let addSongController = AddSongVC()
+//            tabBarController.viewControllers = [addSongController]
+//            rightViewController = tabBarController
+//            tabBarItem.title = "Add Song"
             
         }
 
@@ -185,7 +188,7 @@ class BaseSlidingVC: UIViewController {
     }
     
     fileprivate func setupViewController() {
-        let menuController = MenuVC()
+        let menuController = DetailMenuVC()
         
         let homeView = rightViewController.view!
         let menuView = menuController.view!

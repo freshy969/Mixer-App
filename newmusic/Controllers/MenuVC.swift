@@ -28,10 +28,11 @@ class MenuVC: UITableViewController {
     let menuItems = [
         MenuItem(icon: UIImage(named: "homeGray")!, title: "Home"),
         MenuItem(icon: UIImage(named: "favelist")!, title: "Your Top 10"),
+        MenuItem(icon: UIImage(named: "fireGray")!, title: "Your Hot 10"),
         MenuItem(icon: UIImage(named: "playlist")!, title: "Playlists"),
         MenuItem(icon: UIImage(named: "queueGray")!, title: "Queue"),
-        MenuItem(icon: UIImage(named: "searchGray")!, title: "Search"),
-        MenuItem(icon: UIImage(named: "addGray")!, title: "Add a Song")
+//        MenuItem(icon: UIImage(named: "searchGray")!, title: "Search"),
+//        MenuItem(icon: UIImage(named: "addGray")!, title: "Add a Song")
     ]
 
     override func viewDidLoad() {

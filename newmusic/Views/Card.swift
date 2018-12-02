@@ -122,15 +122,15 @@ class Card: UIView {
         usernameButtonLabel.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 20, paddingBottom: 10, paddingRight: 50, width: 246, height: 17)
         playlistNameButtonLabel.anchor(top: usernameButtonLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 50, width: 246, height: 27)
         profilePictureButton.anchor(top: self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 20, width: 48, height: 48)
-        albumImage.anchor(top: playlistNameButtonLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 250, height: 250)
+        albumImage.anchor(top: playlistNameButtonLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 27.5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 225, height: 225)
         albumImage.centerXAnchor.constraint(lessThanOrEqualTo: albumImage.superview!.centerXAnchor).isActive = true
-        songNameButtonLabel.anchor(top: albumImage.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 20, paddingBottom: 10, paddingRight: 0, width: 241, height: 17)
+        songNameButtonLabel.anchor(top: albumImage.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 27.5, paddingLeft: 20, paddingBottom: 10, paddingRight: 0, width: 241, height: 17)
         artistNameButtonLabel.anchor(top: songNameButtonLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 241, height: 17)
         addButton.anchor(top: artistNameButtonLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 20, paddingBottom: 20, paddingRight: 5, width: 30, height: 30)
         queueButton.anchor(top: artistNameButtonLabel.bottomAnchor, left: addButton.rightAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 5, paddingBottom: 20, paddingRight: 5, width: 30, height: 30)
         sendButton.anchor(top: artistNameButtonLabel.bottomAnchor, left: queueButton.rightAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 5, paddingBottom: 20, paddingRight: 5, width: 30, height: 30)
-        likeTotalButtonLabel.anchor(top: albumImage.bottomAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 35, paddingLeft: 5, paddingBottom: 0, paddingRight: 20, width: 70, height: 17)
-        playButton.anchor(top: likeTotalButtonLabel.bottomAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 20, paddingRight: 20, width: 30, height: 30)
+        likeTotalButtonLabel.anchor(top: albumImage.bottomAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 45, paddingLeft: 5, paddingBottom: 0, paddingRight: 20, width: 70, height: 17)
+        playButton.anchor(top: likeTotalButtonLabel.bottomAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 7.5, paddingLeft: 5, paddingBottom: 20, paddingRight: 20, width: 30, height: 30)
 
     }
 

@@ -16,13 +16,13 @@ class DetailMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let menuView = menuController.view!
-//        view.addSubview(menuView)
-//        view.addSubview(footerView)
-//
-//        menuView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 530)
-//        
-//        footerView.anchor(top: menuView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        let menuView = menuController.view!
+        view.addSubview(menuView)
+        view.addSubview(footerView)
+
+        menuView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 750)
+        
+        footerView.anchor(top: menuView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 300, height: 0)
     }
     
 }
@@ -31,8 +31,16 @@ class FooterView: UIView {
     
     let searchIcon: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "searchBlack")
-//        iv.contentMode = .scaleAspectFit
+        iv.image = UIImage(named: "searchGray")
+        iv.contentMode = .scaleAspectFit
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    
+    let addIcon: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "addGray")
+        iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -42,10 +50,12 @@ class FooterView: UIView {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
-        backgroundColor = .yellow
+        backgroundColor = .white
         addSubview(searchIcon)
+        addSubview(addIcon)
         
-        searchIcon.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 140, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
+        searchIcon.anchor(top: nil, left: self.leftAnchor, bottom: self.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: -30, paddingRight: 0, width: 30, height: 30)
+        addIcon.anchor(top: nil, left: nil, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -30, paddingRight: 20, width: 30, height: 30)
         
     }
     
