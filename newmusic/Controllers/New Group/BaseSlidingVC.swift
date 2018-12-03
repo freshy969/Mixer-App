@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class RightContainerView: UIView {}
 class MenuContainerView: UIView {}
 class CoverView: UIView {}
 
-class BaseSlidingVC: UIViewController {
+class BaseSlidingVC: UIViewController, LoginControllerDelegate {
     
     let redView: RightContainerView = {
         let v = RightContainerView()
@@ -45,6 +46,15 @@ class BaseSlidingVC: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapDismissed))
         coverView.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
+    
+    func didFinishLoggingIn() {
+        // fetch user data here
     }
 
     @objc fileprivate func handleTapDismissed() {
@@ -118,14 +128,14 @@ class BaseSlidingVC: UIViewController {
     
     func didSelectMenuItem(indexPath: IndexPath) {
         
-        performRideViewCleanup()
+        performRightViewCleanup()
         closeMenu()
 
         switch indexPath.row {
         case 0:
             rightViewController = UINavigationController(rootViewController: HomeVC())
         case 1:
-            rightViewController = UINavigationController(rootViewController: TopTenPlaylistVC())
+            rightViewController = UINavigationController(rootViewController: Top10VC())
         case 2:
             rightViewController = UINavigationController(rootViewController: HotTenPlaylistVC())
         case 3:
@@ -150,7 +160,7 @@ class BaseSlidingVC: UIViewController {
     
     var rightViewController: UIViewController = UINavigationController(rootViewController: HomeVC())
     
-    fileprivate func performRideViewCleanup() {
+    fileprivate func performRightViewCleanup() {
         rightViewController.view.removeFromSuperview()
         rightViewController.removeFromParent()
     }
@@ -163,7 +173,7 @@ class BaseSlidingVC: UIViewController {
         })
     }
     
-    fileprivate func setupViews() {
+    func setupViews() {
         view.addSubview(redView)
         view.addSubview(blueView)
         // Auto-Layout
@@ -187,7 +197,7 @@ class BaseSlidingVC: UIViewController {
         
     }
     
-    fileprivate func setupViewController() {
+    func setupViewController() {
         let menuController = DetailMenuVC()
         
         let homeView = rightViewController.view!

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailMenuVC: UIViewController {
-
+    
     let menuController = MenuVC()
     let footerView = FooterView()
     
@@ -19,10 +20,32 @@ class DetailMenuVC: UIViewController {
         let menuView = menuController.view!
         view.addSubview(menuView)
         view.addSubview(footerView)
+        
+        menuController.customHeaderView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
 
         menuView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 750)
         
         footerView.anchor(top: menuView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 300, height: 0)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser == nil {
+            let loginController = RegistrationVC()
+            let navContoller = UINavigationController(rootViewController: loginController)
+            self.present(navContoller, animated: true)
+        }
+    }
+    
+    @objc func handleSettings() {
+        try? Auth.auth().signOut()
+        print("Logged out")
+        
+        if Auth.auth().currentUser == nil {
+            let loginController = RegistrationVC()
+            let navContoller = UINavigationController(rootViewController: loginController)
+            self.present(navContoller, animated: true)
+        }
     }
     
 }
@@ -31,7 +54,7 @@ class FooterView: UIView {
     
     let searchIcon: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "searchGray")
+        iv.image = UIImage(named: "searchColor")
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
@@ -39,7 +62,7 @@ class FooterView: UIView {
     
     let addIcon: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "addGray")
+        iv.image = UIImage(named: "addColor")
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv

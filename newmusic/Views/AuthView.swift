@@ -12,7 +12,7 @@ class AuthView: UIView {
     
     let logoImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "NewMusicLogoWhite")
+        iv.image = UIImage(named: "newmusicLogoWhite")
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
@@ -40,20 +40,38 @@ class AuthView: UIView {
         return label
     }()
 
-    let enterUsername: UITextField = {
+    let enterEmail: UITextField = {
         let tf = UITextField()
         tf.textColor = UIColor.white
-        tf.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         tf.font = UIFont.boldSystemFont(ofSize: 18)
         return tf
     }()
     
     let enterPassword: UITextField = {
         let tf = UITextField()
+        tf.isSecureTextEntry = true
         tf.textColor = UIColor.white
         tf.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         tf.font = UIFont.boldSystemFont(ofSize: 18)
         return tf
+    }()
+    
+    let signUpButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Sign Up", for: .normal)
+        button.backgroundColor = UIColor.clear
+        
+        button.layer.cornerRadius = 30
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.setTitleColor(.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.isEnabled = false
+        
+        return button
     }()
     
     let whiteSeparatorLine: UIView = {
@@ -63,15 +81,23 @@ class AuthView: UIView {
         return v
     }()
     
-    let signUpButton = SignUpButtonView()
+    let alreadyHaveAccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .regular), NSAttributedString.Key.foregroundColor: UIColor.white])
+        attributedTitle.append(NSAttributedString(string: "Sign In.", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .heavy), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+//        button.addTarget(self, action: #selector(handleAlreadyHaveAccount), for: .touchUpInside)
+        return button
+    }()
     
-    let bottomQuestionLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let incorrectCredentials: UILabel = {
+        let tf = UILabel()
+        tf.font = UIFont.systemFont(ofSize: 14)
+        tf.textColor = UIColor.white
+        tf.textAlignment = .center
+        tf.text = ""
+        return tf
     }()
     
     override init(frame: CGRect) {
@@ -80,7 +106,6 @@ class AuthView: UIView {
 //        backgroundColor = UIColor.rgb(red: 6, green: 28, blue: 61)
         self.translatesAutoresizingMaskIntoConstraints = false
         addBackground()
-        setupStatsAttributedText()
     }
     
     fileprivate func setupAuthView() {
@@ -98,24 +123,19 @@ class AuthView: UIView {
     }
     
     fileprivate func setupAuthComponents() {
-        self.addSubview(enterUsername)
+        self.addSubview(enterEmail)
         self.addSubview(enterPassword)
         self.addSubview(whiteSeparatorLine)
         self.addSubview(signUpButton)
-        self.addSubview(bottomQuestionLabel)
+        self.addSubview(incorrectCredentials)
+        self.addSubview(alreadyHaveAccountButton)
         
-        enterUsername.anchor(top: appDescriptionLine2Label.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 24)
-        whiteSeparatorLine.anchor(top: enterUsername.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 20, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 1)
+        enterEmail.anchor(top: appDescriptionLine2Label.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 24)
+        whiteSeparatorLine.anchor(top: enterEmail.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 20, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 1)
         enterPassword.anchor(top: whiteSeparatorLine.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 24)
         signUpButton.anchor(top: enterPassword.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 30, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 60)
-        bottomQuestionLabel.anchor(top: nil, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 40, paddingBottom: -40, paddingRight: 40, width: 50, height: 20)
-    }
-    
-    fileprivate func setupStatsAttributedText() {
-        bottomQuestionLabel.font = UIFont.systemFont(ofSize: 14)
-        let attributedText = NSMutableAttributedString(string: "Already have an account? ", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .regular)])
-        attributedText.append(NSAttributedString(string: "Sign In.", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .heavy)]))
-        bottomQuestionLabel.attributedText = attributedText
+        incorrectCredentials.anchor(top: signUpButton.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 20, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 50, height: 24)
+        alreadyHaveAccountButton.anchor(top: nil, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 40, paddingBottom: -40, paddingRight: 40, width: 50, height: 20)
     }
     
     func addBackground() {

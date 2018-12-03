@@ -13,11 +13,11 @@ class CustomMenuHeaderView: UIView {
     let nameLabel = UILabel()
     let usernameLabel = UILabel()
     let statsLabel = UILabel()
-    let profileImageView = ProfileImageView()
+    let profileImageView = MenuProfileImageView()
     
-    let settingsIcon: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "settingsGray")
+    let settingsButton: UIButton = {
+        let iv = UIButton()
+        iv.setImage(UIImage(named: "settingsColor"), for: .normal)
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
@@ -59,7 +59,7 @@ class CustomMenuHeaderView: UIView {
         addSubview(nameLabel)
         addSubview(usernameLabel)
         addSubview(statsLabel)
-        addSubview(settingsIcon)
+        addSubview(settingsButton)
         
         profileImageView.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         nameLabel.anchor(top: profileImageView.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 12.5, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -67,7 +67,7 @@ class CustomMenuHeaderView: UIView {
         
         statsLabel.anchor(top: usernameLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        settingsIcon.anchor(top: self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 35, paddingLeft: 0, paddingBottom: 0, paddingRight: 12.5, width: 30, height: 30)
+        settingsButton.anchor(top: self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 35, paddingLeft: 0, paddingBottom: 0, paddingRight: 12.5, width: 30, height: 30)
     }
     
     required init?(coder aDecoder: NSCoder) {

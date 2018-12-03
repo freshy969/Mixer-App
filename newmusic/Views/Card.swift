@@ -13,9 +13,9 @@ class Card: UIView {
 
     let albumImage = AlbumImageView()
     let addButton = PostActionButtonView()
-    let queueButton = OffCenteredButtonView()
+    let queueButton = OffCenteredActionButtonView()
     let sendButton = PostActionButtonView()
-    let playButton = OffCenteredButtonView()
+    let playButton = OffCenteredActionButtonView()
     
     let profilePictureButton = PostProfileImageView()
     

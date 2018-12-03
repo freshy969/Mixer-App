@@ -13,10 +13,16 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var user: MusicUser!
 //    var mask: CALayer?
 //    var imageView: UIImageView?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
 //        self.window = UIWindow(frame: UIScreen.main.bounds)
 //
 //        let imageView = UIImageView(frame: self.window!.frame)
@@ -43,11 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window!.makeKeyAndVisible()
     
         // Override point for customization after application launch.
+        
         window = UIWindow()
         window?.makeKeyAndVisible()
-//        window?.rootViewController = UINavigationController(rootViewController: HomeVC())
         window?.rootViewController = BaseSlidingVC()
-        FirebaseApp.configure()
 
         return true
     }

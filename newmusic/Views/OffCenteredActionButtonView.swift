@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OffCenteredButtonView: UIView {
+class OffCenteredActionButtonView: UIView {
     
     let buttonIcon = ActionButtonImageView()
     

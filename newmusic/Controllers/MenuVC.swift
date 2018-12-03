@@ -25,6 +25,8 @@ extension MenuVC {
 
 class MenuVC: UITableViewController {
     
+    let customHeaderView = CustomMenuHeaderView()
+    
     let menuItems = [
         MenuItem(icon: UIImage(named: "homeGray")!, title: "Home"),
         MenuItem(icon: UIImage(named: "favelist")!, title: "Your Top 10"),
@@ -42,7 +44,6 @@ class MenuVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let customHeaderView = CustomMenuHeaderView()
         return customHeaderView
     }
     

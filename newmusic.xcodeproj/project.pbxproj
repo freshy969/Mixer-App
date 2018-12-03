@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D851302921B0C6580031FDF4 /* AlbumImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D851302821B0C6580031FDF4 /* AlbumImageView.swift */; };
-		D851302B21B0E7FF0031FDF4 /* OffCenteredButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D851302A21B0E7FF0031FDF4 /* OffCenteredButtonView.swift */; };
+		D8071E8E21B46C730078AD3D /* RegistrationStep2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E8D21B46C730078AD3D /* RegistrationStep2VC.swift */; };
+		D8071E9021B482560078AD3D /* CustomPlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E8F21B482560078AD3D /* CustomPlaylistHeaderView.swift */; };
+		D8071E9221B48C030078AD3D /* Top10VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E9121B48C030078AD3D /* Top10VC.swift */; };
+		D8071E9421B48EE40078AD3D /* PlaylistDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E9321B48EE40078AD3D /* PlaylistDetailTableViewCell.swift */; };
+		D8071E9621B4953B0078AD3D /* AlbumCollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E9521B4953B0078AD3D /* AlbumCollageView.swift */; };
+		D8071E9A21B4FCEB0078AD3D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E9821B4FCEA0078AD3D /* LoginVC.swift */; };
+		D851302B21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D851302A21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift */; };
 		D851302E21B0F9690031FDF4 /* BaseSlidingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D851302D21B0F9690031FDF4 /* BaseSlidingVC.swift */; };
 		D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDEC421AE56540007ACBC /* MenuVC.swift */; };
 		D87FDED221AEEC3A0007ACBC /* CustomMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */; };
 		D87FDED421AEF0DF0007ACBC /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED321AEF0DF0007ACBC /* SpacerView.swift */; };
-		D87FDED621AEF5690007ACBC /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED521AEF5690007ACBC /* ProfileImageView.swift */; };
+		D87FDED621AEF5690007ACBC /* ImageViewSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED521AEF5690007ACBC /* ImageViewSizes.swift */; };
 		D87FDED821AEFECF0007ACBC /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED721AEFECF0007ACBC /* MenuItemCell.swift */; };
 		D8840D6E21B2260200B858CD /* TopTenPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8840D6D21B2260200B858CD /* TopTenPlaylistVC.swift */; };
 		D8840D7021B2261D00B858CD /* QueueListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8840D6F21B2261D00B858CD /* QueueListVC.swift */; };
@@ -22,17 +27,16 @@
 		D8840D7821B276C500B858CD /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8840D7721B276C500B858CD /* SearchVC.swift */; };
 		D8840D7A21B317B100B858CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8840D7921B317B000B858CD /* GoogleService-Info.plist */; };
 		D886FD2121B1A00100935D04 /* PlaylistListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D886FD2021B1A00100935D04 /* PlaylistListVC.swift */; };
+		D88CB73F21B3A87E008537BA /* MusicUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88CB73E21B3A87E008537BA /* MusicUser.swift */; };
+		D896614221B3D0D200136804 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896614121B3D0D200136804 /* RegistrationVC.swift */; };
+		D896614421B3D12B00136804 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896614321B3D12B00136804 /* CustomTextField.swift */; };
 		D8A0977121B3427D00975E54 /* HotTenPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0977021B3427D00975E54 /* HotTenPlaylistVC.swift */; };
-		D8A0977321B3517600975E54 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0977221B3517600975E54 /* AuthVC.swift */; };
-		D8A0977521B351AB00975E54 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0977421B351AB00975E54 /* AuthView.swift */; };
 		D8A0977721B35CFB00975E54 /* SignUpButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0977621B35CFB00975E54 /* SignUpButtonView.swift */; };
 		D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB800721ADC9BE0045DD14 /* Extensions.swift */; };
 		D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */; };
 		D8E0745D21B032A200B47951 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0745C21B032A200B47951 /* HomeVC.swift */; };
 		D8E0745F21B0359E00B47951 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0745E21B0359E00B47951 /* Card.swift */; };
 		D8E0746521B0426F00B47951 /* PostActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0746421B0426F00B47951 /* PostActionButtonView.swift */; };
-		D8E0746721B0443900B47951 /* ActionButtonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0746621B0443900B47951 /* ActionButtonImageView.swift */; };
-		D8E0746921B0507A00B47951 /* PostProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0746821B0507A00B47951 /* PostProfileImageView.swift */; };
 		D8F076CF219F841200E08006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F076CE219F841200E08006 /* AppDelegate.swift */; };
 		D8F076D4219F841200E08006 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8F076D2219F841200E08006 /* Main.storyboard */; };
 		D8F076D6219F841300E08006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8F076D5219F841300E08006 /* Assets.xcassets */; };
@@ -43,13 +47,18 @@
 /* Begin PBXFileReference section */
 		5C9A7B7C8642597BD862FE6B /* Pods-newmusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-newmusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-newmusic/Pods-newmusic.release.xcconfig"; sourceTree = "<group>"; };
 		D118CE7442EE3ECF808986CA /* Pods_newmusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_newmusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D851302821B0C6580031FDF4 /* AlbumImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumImageView.swift; sourceTree = "<group>"; };
-		D851302A21B0E7FF0031FDF4 /* OffCenteredButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffCenteredButtonView.swift; sourceTree = "<group>"; };
+		D8071E8D21B46C730078AD3D /* RegistrationStep2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStep2VC.swift; sourceTree = "<group>"; };
+		D8071E8F21B482560078AD3D /* CustomPlaylistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlaylistHeaderView.swift; sourceTree = "<group>"; };
+		D8071E9121B48C030078AD3D /* Top10VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top10VC.swift; sourceTree = "<group>"; };
+		D8071E9321B48EE40078AD3D /* PlaylistDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailTableViewCell.swift; sourceTree = "<group>"; };
+		D8071E9521B4953B0078AD3D /* AlbumCollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollageView.swift; sourceTree = "<group>"; };
+		D8071E9821B4FCEA0078AD3D /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		D851302A21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffCenteredActionButtonView.swift; sourceTree = "<group>"; };
 		D851302D21B0F9690031FDF4 /* BaseSlidingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlidingVC.swift; sourceTree = "<group>"; };
 		D87FDEC421AE56540007ACBC /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuHeaderView.swift; sourceTree = "<group>"; };
 		D87FDED321AEF0DF0007ACBC /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
-		D87FDED521AEF5690007ACBC /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		D87FDED521AEF5690007ACBC /* ImageViewSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewSizes.swift; sourceTree = "<group>"; };
 		D87FDED721AEFECF0007ACBC /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		D8840D6D21B2260200B858CD /* TopTenPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenPlaylistVC.swift; sourceTree = "<group>"; };
 		D8840D6F21B2261D00B858CD /* QueueListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueListVC.swift; sourceTree = "<group>"; };
@@ -58,17 +67,16 @@
 		D8840D7721B276C500B858CD /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		D8840D7921B317B000B858CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D886FD2021B1A00100935D04 /* PlaylistListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListVC.swift; sourceTree = "<group>"; };
+		D88CB73E21B3A87E008537BA /* MusicUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicUser.swift; sourceTree = "<group>"; };
+		D896614121B3D0D200136804 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		D896614321B3D12B00136804 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D8A0977021B3427D00975E54 /* HotTenPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotTenPlaylistVC.swift; sourceTree = "<group>"; };
-		D8A0977221B3517600975E54 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
-		D8A0977421B351AB00975E54 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		D8A0977621B35CFB00975E54 /* SignUpButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpButtonView.swift; sourceTree = "<group>"; };
 		D8AB800721ADC9BE0045DD14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		D8E0745C21B032A200B47951 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D8E0745E21B0359E00B47951 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		D8E0746421B0426F00B47951 /* PostActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionButtonView.swift; sourceTree = "<group>"; };
-		D8E0746621B0443900B47951 /* ActionButtonImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonImageView.swift; sourceTree = "<group>"; };
-		D8E0746821B0507A00B47951 /* PostProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProfileImageView.swift; sourceTree = "<group>"; };
 		D8F076CB219F841200E08006 /* newmusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newmusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F076CE219F841200E08006 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8F076D3219F841200E08006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +106,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D8071E9721B4FCC60078AD3D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D8071E9821B4FCEA0078AD3D /* LoginVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		D851302C21B0F93D0031FDF4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,11 +126,14 @@
 		D87FDEC321AE562A0007ACBC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D8071E9721B4FCC60078AD3D /* Login */,
 				D851302C21B0F93D0031FDF4 /* Base */,
 				D8E0745C21B032A200B47951 /* HomeVC.swift */,
-				D8A0977221B3517600975E54 /* AuthVC.swift */,
 				D87FDEC421AE56540007ACBC /* MenuVC.swift */,
 				D8840D7521B25FD100B858CD /* DetailMenuVC.swift */,
+				D896614121B3D0D200136804 /* RegistrationVC.swift */,
+				D8071E8D21B46C730078AD3D /* RegistrationStep2VC.swift */,
+				D8071E9121B48C030078AD3D /* Top10VC.swift */,
 				D8840D6D21B2260200B858CD /* TopTenPlaylistVC.swift */,
 				D8A0977021B3427D00975E54 /* HotTenPlaylistVC.swift */,
 				D886FD2021B1A00100935D04 /* PlaylistListVC.swift */,
@@ -130,6 +149,7 @@
 			children = (
 				D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */,
 				D87FDED721AEFECF0007ACBC /* MenuItemCell.swift */,
+				D8071E9321B48EE40078AD3D /* PlaylistDetailTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -138,24 +158,31 @@
 			isa = PBXGroup;
 			children = (
 				D8E0745E21B0359E00B47951 /* Card.swift */,
-				D8A0977421B351AB00975E54 /* AuthView.swift */,
+				D8071E8F21B482560078AD3D /* CustomPlaylistHeaderView.swift */,
+				D8071E9521B4953B0078AD3D /* AlbumCollageView.swift */,
 				D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */,
 				D8E0746421B0426F00B47951 /* PostActionButtonView.swift */,
-				D8E0746621B0443900B47951 /* ActionButtonImageView.swift */,
-				D851302A21B0E7FF0031FDF4 /* OffCenteredButtonView.swift */,
-				D8E0746821B0507A00B47951 /* PostProfileImageView.swift */,
-				D87FDED521AEF5690007ACBC /* ProfileImageView.swift */,
-				D851302821B0C6580031FDF4 /* AlbumImageView.swift */,
+				D851302A21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift */,
 				D8A0977621B35CFB00975E54 /* SignUpButtonView.swift */,
-				D87FDED321AEF0DF0007ACBC /* SpacerView.swift */,
+				D896614321B3D12B00136804 /* CustomTextField.swift */,
+				D87FDED521AEF5690007ACBC /* ImageViewSizes.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D88CB73D21B3A86F008537BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D88CB73E21B3A87E008537BA /* MusicUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D8AB800621ADC9A90045DD14 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				D8AB800721ADC9BE0045DD14 /* Extensions.swift */,
+				D87FDED321AEF0DF0007ACBC /* SpacerView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -181,8 +208,9 @@
 		D8F076CD219F841200E08006 /* newmusic */ = {
 			isa = PBXGroup;
 			children = (
-				D87FDEC321AE562A0007ACBC /* Controllers */,
+				D88CB73D21B3A86F008537BA /* Models */,
 				D87FDED021AEEC1A0007ACBC /* Views */,
+				D87FDEC321AE562A0007ACBC /* Controllers */,
 				D87FDEC621AE56A40007ACBC /* Custom Cells */,
 				D8F076CE219F841200E08006 /* AppDelegate.swift */,
 				D8F076D2219F841200E08006 /* Main.storyboard */,
@@ -282,25 +310,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-newmusic/Pods-newmusic-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAnonymousAuthUI.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseTwitterAuthUI.bundle",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAnonymousAuthUI.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseTwitterAuthUI.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -332,47 +346,29 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-newmusic/Pods-newmusic-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -388,13 +384,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D896614221B3D0D200136804 /* RegistrationVC.swift in Sources */,
 				D8840D6E21B2260200B858CD /* TopTenPlaylistVC.swift in Sources */,
-				D87FDED621AEF5690007ACBC /* ProfileImageView.swift in Sources */,
+				D87FDED621AEF5690007ACBC /* ImageViewSizes.swift in Sources */,
 				D8A0977121B3427D00975E54 /* HotTenPlaylistVC.swift in Sources */,
+				D8071E9421B48EE40078AD3D /* PlaylistDetailTableViewCell.swift in Sources */,
 				D8E0745D21B032A200B47951 /* HomeVC.swift in Sources */,
+				D896614421B3D12B00136804 /* CustomTextField.swift in Sources */,
 				D8A0977721B35CFB00975E54 /* SignUpButtonView.swift in Sources */,
-				D851302B21B0E7FF0031FDF4 /* OffCenteredButtonView.swift in Sources */,
-				D851302921B0C6580031FDF4 /* AlbumImageView.swift in Sources */,
+				D88CB73F21B3A87E008537BA /* MusicUser.swift in Sources */,
+				D8071E9021B482560078AD3D /* CustomPlaylistHeaderView.swift in Sources */,
+				D851302B21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift in Sources */,
 				D886FD2121B1A00100935D04 /* PlaylistListVC.swift in Sources */,
 				D87FDED421AEF0DF0007ACBC /* SpacerView.swift in Sources */,
 				D8840D7021B2261D00B858CD /* QueueListVC.swift in Sources */,
@@ -403,15 +403,15 @@
 				D8F076CF219F841200E08006 /* AppDelegate.swift in Sources */,
 				D8E0746521B0426F00B47951 /* PostActionButtonView.swift in Sources */,
 				D8840D7821B276C500B858CD /* SearchVC.swift in Sources */,
+				D8071E9A21B4FCEB0078AD3D /* LoginVC.swift in Sources */,
+				D8071E9621B4953B0078AD3D /* AlbumCollageView.swift in Sources */,
+				D8071E8E21B46C730078AD3D /* RegistrationStep2VC.swift in Sources */,
 				D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */,
-				D8E0746921B0507A00B47951 /* PostProfileImageView.swift in Sources */,
-				D8A0977521B351AB00975E54 /* AuthView.swift in Sources */,
 				D87FDED821AEFECF0007ACBC /* MenuItemCell.swift in Sources */,
+				D8071E9221B48C030078AD3D /* Top10VC.swift in Sources */,
 				D8840D7621B25FD100B858CD /* DetailMenuVC.swift in Sources */,
-				D8A0977321B3517600975E54 /* AuthVC.swift in Sources */,
 				D851302E21B0F9690031FDF4 /* BaseSlidingVC.swift in Sources */,
 				D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */,
-				D8E0746721B0443900B47951 /* ActionButtonImageView.swift in Sources */,
 				D8E0745F21B0359E00B47951 /* Card.swift in Sources */,
 				D8840D7221B2268800B858CD /* AddSongVC.swift in Sources */,
 			);

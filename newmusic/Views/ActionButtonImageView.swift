@@ -8,17 +8,4 @@
 
 import UIKit
 
-class ActionButtonImageView: UIButton {
-    
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 14, height: 14)
-    }
-}
-
-class ActionButtonBackgroundView: UIView {
-    
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 30, height: 30)
-    }
-}
 
