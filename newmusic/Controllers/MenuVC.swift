@@ -84,6 +84,7 @@ class MenuVC: UITableViewController {
         if let url = URL(string: imageName) {
             header.profileImageView.sd_setImage(with: url)
         } else {
+            
             // return the default image
         }
         
