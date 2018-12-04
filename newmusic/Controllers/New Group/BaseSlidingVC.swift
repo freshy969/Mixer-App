@@ -150,7 +150,7 @@ class BaseSlidingVC: UIViewController, LoginControllerDelegate {
         case 0:
             rightViewController = UINavigationController(rootViewController: HomeVC())
         case 1:
-            rightViewController = UINavigationController(rootViewController: PlaylistDetailVC())
+            rightViewController = UINavigationController(rootViewController: TopTenPlaylistVC())
         case 2:
             rightViewController = UINavigationController(rootViewController: HotTenPlaylistVC())
         case 3:

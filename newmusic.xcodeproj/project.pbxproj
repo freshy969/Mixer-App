@@ -110,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				D8071E9821B4FCEA0078AD3D /* LoginVC.swift */,
+				D896614121B3D0D200136804 /* RegistrationVC.swift */,
+				D8071E8D21B46C730078AD3D /* RegistrationStep2VC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -131,12 +133,10 @@
 				D8E0745C21B032A200B47951 /* HomeVC.swift */,
 				D87FDEC421AE56540007ACBC /* MenuVC.swift */,
 				D8840D7521B25FD100B858CD /* DetailMenuVC.swift */,
-				D896614121B3D0D200136804 /* RegistrationVC.swift */,
-				D8071E8D21B46C730078AD3D /* RegistrationStep2VC.swift */,
-				D8E5EFCF21B5A65B00CD4B0C /* PlaylistDetailVC.swift */,
 				D8E5EFD121B5A71B00CD4B0C /* TopTenVC.swift */,
 				D8A0977021B3427D00975E54 /* HotTenPlaylistVC.swift */,
 				D886FD2021B1A00100935D04 /* PlaylistListVC.swift */,
+				D8E5EFCF21B5A65B00CD4B0C /* PlaylistDetailVC.swift */,
 				D8840D6F21B2261D00B858CD /* QueueListVC.swift */,
 				D8840D7721B276C500B858CD /* SearchVC.swift */,
 				D8840D7121B2268800B858CD /* AddSongVC.swift */,

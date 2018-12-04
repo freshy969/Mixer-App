@@ -24,8 +24,9 @@ class DetailMenuVC: UIViewController {
         view.addSubview(footerView)
         
         menuController.customHeaderView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
+        self.footerView.addIcon.addTarget(self, action: #selector(handleSearch), for: .touchUpInside)
 
-        menuView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 750)
+        menuView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 550)
         
         footerView.anchor(top: menuView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 300, height: 0)
     }
@@ -53,21 +54,26 @@ class DetailMenuVC: UIViewController {
         }
     }
     
+    @objc fileprivate func handleSearch() {
+        let addSongController = AddSongVC()
+        present(addSongController, animated: true)
+    }
+    
 }
 
 class FooterView: UIView {
     
-    let searchIcon: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "searchColor")
+    let searchIcon: UIButton = {
+        let iv = UIButton()
+        iv.setImage(UIImage(named: "searchColor"), for: .normal)
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
-    let addIcon: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "addColor")
+    let addIcon: UIButton = {
+        let iv = UIButton()
+        iv.setImage(UIImage(named: "addColor"), for: .normal)
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
@@ -82,8 +88,8 @@ class FooterView: UIView {
         addSubview(searchIcon)
         addSubview(addIcon)
         
-        searchIcon.anchor(top: nil, left: self.leftAnchor, bottom: self.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: -30, paddingRight: 0, width: 30, height: 30)
-        addIcon.anchor(top: nil, left: nil, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -30, paddingRight: 20, width: 30, height: 30)
+        searchIcon.anchor(top: nil, left: self.leftAnchor, bottom: self.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: -25, paddingRight: 0, width: 30, height: 30)
+        addIcon.anchor(top: nil, left: nil, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -25, paddingRight: 20, width: 30, height: 30)
         
     }
     

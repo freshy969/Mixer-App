@@ -43,6 +43,7 @@ class MenuVC: UITableViewController {
         tableView.separatorStyle = .none
         self.tableView.register(MenuItemCell.self, forCellReuseIdentifier: "menuCellId")
         loadUserPhotos()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +86,7 @@ class MenuVC: UITableViewController {
         } else {
             // return the default image
         }
-         
+        
         let fullName = self.user?.fullName ?? ""
         let userName = self.user?.displayName ?? ""
         

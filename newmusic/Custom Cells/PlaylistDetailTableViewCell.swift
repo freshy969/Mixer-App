@@ -9,7 +9,7 @@
 import UIKit
 
 class PlaylistDetailTableViewCell: UITableViewCell {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,7 +17,7 @@ class PlaylistDetailTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        self.textLabel?.text = "Your Top 10"
+        self.textLabel?.text = ""
 
         // Configure the view for the selected state
     }

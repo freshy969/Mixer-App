@@ -46,6 +46,7 @@ class HotTenPlaylistVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistDetailTableViewCell
+        cell.textLabel?.text = "Your Hot 10"
         return cell
     }
     
