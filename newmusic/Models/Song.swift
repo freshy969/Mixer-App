@@ -44,18 +44,18 @@ class Song {
     }
     
     convenience init() {
-//        let currentUserID = Auth.auth().currentUser?.email ?? "Unknown User"
+        //        let currentUserID = Auth.auth().currentUser?.email ?? "Unknown User"
         self.init(name: "", artist: "", playlist: "", albumImage: "",
-//                  reviewerUserID: currentUserID,
-                  dateAdded: Date(), documentID: "")
+                  //                  reviewerUserID: currentUserID,
+            dateAdded: Date(), documentID: "")
     }
     
-    func saveSong(user: MusicUser, completed: @escaping (Bool) -> ()) {
+    func saveTop10Song(user: MusicUser, completed: @escaping (Bool) -> ()) {
         let db = Firestore.firestore()
         
         let dataToSave = self.dictionary
         if self.documentID != "" {
-            let ref = db.collection("users").document(user.documentID).collection("songs").document(self.documentID)
+            let ref = db.collection("users").document(user.documentID).collection("top10").document(self.documentID)
             ref.setData(dataToSave) { (error) in
                 if let error = error {
                     print("ERROR: updating document \(self.documentID) in spot \(user.documentID) \(error.localizedDescription)")
@@ -67,18 +67,37 @@ class Song {
                 }
             }
         }
+        
+        func saveHot10Song(user: MusicUser, completed: @escaping (Bool) -> ()) {
+            let db = Firestore.firestore()
             
-        else {
-            var ref: DocumentReference? = nil
-            ref = db.collection("users").document(user.documentID).collection("songs").addDocument(data: dataToSave) { error in
-                if let error = error {
-                    print("ERROR: updating spot \(user.documentID) for new review documentID \(self.documentID) \(error.localizedDescription)")
-                    completed(false)
+            let dataToSave = self.dictionary
+            if self.documentID != "" {
+                let ref = db.collection("users").document(user.documentID).collection("songs").document(self.documentID)
+                ref.setData(dataToSave) { (error) in
+                    if let error = error {
+                        print("ERROR: updating document \(self.documentID) in spot \(user.documentID) \(error.localizedDescription)")
+                        completed(false)
+                    }
+                    else {
+                        print("Document updated with ref ID \(ref.documentID)")
+                        // song added
+                    }
                 }
-                else {
-                    print("New document created with ref ID \(ref?.documentID ?? "unknown")")
-                    // new song added
-                    
+            }
+                
+            else {
+                var ref: DocumentReference? = nil
+                ref = db.collection("users").document(user.documentID).collection("songs").addDocument(data: dataToSave) { error in
+                    if let error = error {
+                        print("ERROR: updating spot \(user.documentID) for new review documentID \(self.documentID) \(error.localizedDescription)")
+                        completed(false)
+                    }
+                    else {
+                        print("New document created with ref ID \(ref?.documentID ?? "unknown")")
+                        // new song added
+                        
+                    }
                 }
             }
         }

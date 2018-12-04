@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class AddSongVC: UIViewController {
     
-    var user: MusicUser!
+    var song: Song!
+    
+    var top10ButtonClicked = false
+    var hot10buttonClicked = false
     
     let playlistInstructionLabel: UILabel = {
         let label = UILabel()
@@ -99,6 +103,11 @@ class AddSongVC: UIViewController {
         setupTapGesture()
         setupGradientLayer()
         setupView()
+        fetchCurrentUser()
+        
+        if song == nil {
+            song = Song()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,7 +119,24 @@ class AddSongVC: UIViewController {
     }
     
     @objc fileprivate func handleAddSong() {
+        // Need to fetch current user, then stuff the song in a new collection (playlist) in that user
         print("Song was Added")
+        
+        // store song
+        
+        if top10ButtonClicked == true {
+            // Save song to Top 10 Playlist
+            print("Saving song to top 10...")
+//            self.song.saveTop10Song(user: self.user) { (success) in
+//                This will save it to the DB, now just have to fetch in each playlist and show it there
+//            }
+        }
+        
+        if hot10buttonClicked == true {
+            // Save song to Hot 10 Playlist
+            print("Saving song to top 10...")
+        }
+        // segueu to BaseSlidingVC
     }
     
     @objc fileprivate func handleQuit() {
@@ -118,7 +144,11 @@ class AddSongVC: UIViewController {
     }
     
     @objc func handleTextInputChange() {
-        let isFormValid = self.addSongTextField.text?.isEmpty != true
+        handleViewInput()
+    }
+    
+    fileprivate func handleViewInput() {
+        let isFormValid = self.addSongTextField.text?.isEmpty != true && (top10ButtonClicked == true || hot10buttonClicked == true)
         
         if isFormValid {
             self.addSongButton.isEnabled = true
@@ -129,11 +159,32 @@ class AddSongVC: UIViewController {
         }
     }
     
+    var user: MusicUser!
+    
+    fileprivate func fetchCurrentUser() {
+        // fetch some Firestore Data
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, err) in
+            if let err = err {
+                print(err)
+                return
+            }
+            
+            // fetched our user here
+            guard let dictionary = snapshot?.data() else { return }
+            self.user = MusicUser(dictionary: dictionary)
+            print(self.user?.dictionary)
+        }
+    }
+    
     fileprivate func setupTapGesture() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapDismiss)))
     }
     
     @objc fileprivate func handleTop10Tap() {
+        top10ButtonClicked = true
+        hot10buttonClicked = false
+        handleViewInput()
         self.top10PlaylistLabel.backgroundColor = .white
         self.top10PlaylistLabel.setTitleColor(.black, for: .normal)
         self.hot10PlaylistLabel.backgroundColor = UIColor.lightText
@@ -142,6 +193,9 @@ class AddSongVC: UIViewController {
     }
     
     @objc fileprivate func handleHot10Tap() {
+        hot10buttonClicked = true
+        top10ButtonClicked = false
+        handleViewInput()
         self.hot10PlaylistLabel.backgroundColor = .white
         self.hot10PlaylistLabel.setTitleColor(.black, for: .normal)
         self.top10PlaylistLabel.backgroundColor = UIColor.lightText
