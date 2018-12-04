@@ -10,10 +10,10 @@ import UIKit
 
 class CustomMenuHeaderView: UIView {
     
-    let nameLabel = UILabel()
-    let usernameLabel = UILabel()
-    let statsLabel = UILabel()
-    let profileImageView = MenuProfileImageView()
+    var nameLabel = UILabel()
+    var usernameLabel = UILabel()
+    var statsLabel = UILabel()
+    var profileImageView = MenuProfileImageView()
     
     let settingsButton: UIButton = {
         let iv = UIButton()
@@ -35,8 +35,9 @@ class CustomMenuHeaderView: UIView {
         nameLabel.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
         usernameLabel.text = "@joelangenderfer".lowercased()
         statsLabel.text = "42 Following 7091 Followers"
+        
         profileImageView.image = UIImage(named: "joe")
-        profileImageView.contentMode = .scaleAspectFit
+        profileImageView.contentMode = .scaleAspectFill
         profileImageView.layer.cornerRadius = 54 / 2
         profileImageView.clipsToBounds = true
         

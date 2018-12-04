@@ -11,6 +11,8 @@ import Firebase
 
 class DetailMenuVC: UIViewController {
     
+    var user: MusicUser!
+    
     let menuController = MenuVC()
     let footerView = FooterView()
     
@@ -29,11 +31,14 @@ class DetailMenuVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        let currentUser = Auth.auth().currentUser
         super.viewDidAppear(animated)
-        if Auth.auth().currentUser == nil {
-            let loginController = RegistrationVC()
+        if currentUser == nil {
+            let loginController = LoginVC()
             let navContoller = UINavigationController(rootViewController: loginController)
             self.present(navContoller, animated: true)
+        } else {
+            user = MusicUser(user: currentUser!)
         }
     }
     

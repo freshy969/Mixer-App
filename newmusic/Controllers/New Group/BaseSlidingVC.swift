@@ -15,6 +15,8 @@ class CoverView: UIView {}
 
 class BaseSlidingVC: UIViewController, LoginControllerDelegate {
     
+    var user: MusicUser!
+    
     let redView: RightContainerView = {
         let v = RightContainerView()
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +52,20 @@ class BaseSlidingVC: UIViewController, LoginControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        getCurrentUser()
+    
+    }
+    
+    func getCurrentUser() {
+        let currentUser = Auth.auth().currentUser
+        if currentUser == nil {
+            let loginController = RegistrationVC()
+            let navContoller = UINavigationController(rootViewController: loginController)
+            self.present(navContoller, animated: true)
+        }
+        else {
+            user = MusicUser(user: currentUser!)
+        }
     }
     
     func didFinishLoggingIn() {
@@ -135,7 +150,7 @@ class BaseSlidingVC: UIViewController, LoginControllerDelegate {
         case 0:
             rightViewController = UINavigationController(rootViewController: HomeVC())
         case 1:
-            rightViewController = UINavigationController(rootViewController: Top10VC())
+            rightViewController = UINavigationController(rootViewController: PlaylistDetailVC())
         case 2:
             rightViewController = UINavigationController(rootViewController: HotTenPlaylistVC())
         case 3:

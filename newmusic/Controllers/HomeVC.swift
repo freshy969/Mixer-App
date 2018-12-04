@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import SDWebImage
 
 class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     
@@ -25,6 +27,7 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         
         tableView.separatorStyle = .none
         self.tableView.register(TimelineTableViewCell.self, forCellReuseIdentifier: "cellId")
+        fetchCurrentUser()
         setupNavigationBarItems()
     }
     
@@ -45,19 +48,24 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .heavy)]
     }
     
+    var user: MusicUser!
+    
     fileprivate func setupCircularNavigationButton() {
-        let image = UIImage(named: "joe")!.withRenderingMode(.alwaysOriginal)
-        let customView = UIButton(type: .system)
         
+        let customView = UIButton(type: .system)
         customView.addTarget(self, action: #selector(handleOpen), for: .touchUpInside)
-        customView.setImage(image, for: .normal)
+        
+        let imageName = self.user?.profileURL ?? ""
+        let url = URL(string: imageName)
+        customView.sd_setBackgroundImage(with: url, for: .normal)
+        
         customView.imageView?.contentMode = .scaleAspectFit
         
-        customView.layer.cornerRadius = 20
+        customView.layer.cornerRadius = 30 / 2
         customView.clipsToBounds = true
 
-        customView.widthAnchor.constraint(equalToConstant: 35).isActive = true
-        customView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        customView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        customView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         let barButtonItem = UIBarButtonItem(customView: customView)
         navigationItem.leftBarButtonItem = barButtonItem
@@ -81,6 +89,28 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchCurrentUser()
+    }
+    
+    fileprivate func fetchCurrentUser() {
+        // fetch some Firestore Data
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, err) in
+            if let err = err {
+                print(err)
+                return
+            }
+            
+            // fetched our user here
+            guard let dictionary = snapshot?.data() else { return }
+            self.user = MusicUser(dictionary: dictionary)
+            
+            self.tableView.reloadData() // need to reload table one more time
+            self.setupCircularNavigationButton()
+        }
+    }
+
     @objc func openMessages() {
         
     }

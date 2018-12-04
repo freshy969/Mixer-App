@@ -31,6 +31,7 @@ class Card: UIView {
         setupLabelComponents()
         setupButtonComponents()
         setupStackView()
+//        setupPlaylistTapGesture()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -90,6 +91,16 @@ class Card: UIView {
         self.layer.shadowOpacity = 0.6
         self.layer.shadowColor = UIColor.gray.cgColor
     }
+    
+//    func setupPlaylistTapGesture() { // will need to take a string (playlist name) and open that playlist
+//        playlistNameButtonLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openPlaylist)))
+//    }
+//
+//    @objc fileprivate func openPlaylist() {
+//        let playlistController = PlaylistDetailVC()
+//        let navContoller = UINavigationController(rootViewController: playlistController)
+//        navigationController?.pushViewController(navContoller, animated: true)
+//    }
     
     func applyAverageColor() {
         //let gradient = getCircleGradient() // function is currently way too slow to use

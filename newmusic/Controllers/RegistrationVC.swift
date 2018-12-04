@@ -86,17 +86,17 @@ class RegistrationVC: UIViewController {
         let isFormValid = self.usernameTextField.text?.isEmpty != true && self.emailTextField.text?.isEmpty != true && (passwordTextField.text?.count)! > 5
         
         if isFormValid {
-            self.registerButton.isEnabled = true
-            self.registerButton.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
+            self.signUpButton.isEnabled = true
+            self.signUpButton.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
         } else {
-            self.registerButton.isEnabled = false
-            self.registerButton.backgroundColor = UIColor.lightText
+            self.signUpButton.isEnabled = false
+            self.signUpButton.backgroundColor = UIColor.lightText
         }
     }
     
-    let registerButton: UIButton = {
+    let signUpButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Register", for: .normal)
+        button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
 //        button.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
@@ -124,7 +124,7 @@ class RegistrationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
+        setupTapGesture()
         setupLayout()
     }
     
@@ -132,10 +132,18 @@ class RegistrationVC: UIViewController {
         setupNotificationObservers()
     }
     
+    fileprivate func setupTapGesture() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapDismiss)))
+    }
+
+    @objc fileprivate func handleTapDismiss() {
+        self.view.endEditing(true)
+    }
+    
     let registeringHUD = JGProgressHUD(style: .dark)
     
     @objc fileprivate func handleRegister() {
-        
+        self.handleTapDismiss()
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
@@ -146,7 +154,6 @@ class RegistrationVC: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
             if let err = err {
-                print(err)
                 self.showHudWithError(error: err)
                 return
             }
@@ -156,6 +163,7 @@ class RegistrationVC: UIViewController {
             
             if self.user.fullName == "" {
                 let nextStepController = RegistrationStep2VC()
+                nextStepController.user = self.user
                 self.navigationController?.pushViewController(nextStepController, animated: true)
             }
             self.registeringHUD.dismiss(animated: true)
@@ -163,18 +171,11 @@ class RegistrationVC: UIViewController {
     }
     
     fileprivate func saveInfoToFirestore() {
-        let uid = Auth.auth().currentUser?.uid ?? ""
+        let username = usernameTextField.text!
+        
         let currentUser = Auth.auth().currentUser
-        user = MusicUser(user: currentUser!)
-        user.displayName = (usernameTextField.text!).lowercased()
-        let dataToSave: [String : Any] = user.dictionary
-        Firestore.firestore().collection("users").document(uid).setData(dataToSave) { (err) in
-            if let err = err {
-                print(err)
-                self.showHudWithError(error: err)
-                return
-            }
-        }
+        self.user = MusicUser(user: currentUser!)
+        self.user.displayName = username.lowercased()
     }
     
     fileprivate func showHudWithError(error: Error) {
@@ -183,11 +184,11 @@ class RegistrationVC: UIViewController {
         hud.textLabel.text = "Failed Registration"
         hud.detailTextLabel.text = error.localizedDescription
         hud.show(in: self.view)
-        hud.dismiss(afterDelay: 4)
+        hud.dismiss(afterDelay: 3)
     }
     
     fileprivate func checkIfUsernameIsTaken() {
-        print("***Username Being Checked")
+        print("😳😳😳 Username Needs to be Checked")
     }
     
     fileprivate func setupNotificationObservers() {
@@ -228,7 +229,7 @@ class RegistrationVC: UIViewController {
         usernameTextField,
         emailTextField,
         passwordTextField,
-        registerButton,
+        signUpButton,
         SpacerViewHeight(space: 50)
         ])
     

@@ -1,23 +1,29 @@
 //
-//  Top10VC.swift
+//  TopTenVC.swift
 //  newmusic
 //
-//  Created by Joe Langenderfer on 12/2/18.
+//  Created by Joe Langenderfer on 12/3/18.
 //  Copyright © 2018 Joe Langenderfer. All rights reserved.
 //
 
 import UIKit
+import Firebase
 
 class ContainerView: UIView {}
 
-class Top10VC: UITableViewController {
+class TopTenPlaylistVC: UITableViewController {
     
-    let redView: RightContainerView = {
-        let v = RightContainerView()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        return v
+    let customHeaderView = CustomPlaylistHeaderView()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.font = UIFont.boldSystemFont(ofSize: 32)
+        label.text = "Your Favorite Songs of All Time".uppercased()
+        label.numberOfLines = 0
+        return label
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Top 10"
@@ -25,7 +31,7 @@ class Top10VC: UITableViewController {
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
-
+        
         self.tableView.register(PlaylistDetailTableViewCell.self, forCellReuseIdentifier: "PlaylistCell")
     }
     
@@ -43,7 +49,7 @@ class Top10VC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistDetailTableViewCell
-//        cell.textLabel!.text = subtitleLabel.text!
+        //        cell.textLabel!.text = subtitleLabel.text!
         return cell
     }
     
@@ -54,6 +60,4 @@ class Top10VC: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
-
-
 }
