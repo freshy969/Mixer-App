@@ -19,12 +19,14 @@ class DetailMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.user = menuController.user
+        
         let menuView = menuController.view!
         view.addSubview(menuView)
         view.addSubview(footerView)
         
         menuController.customHeaderView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
-        self.footerView.addIcon.addTarget(self, action: #selector(handleSearch), for: .touchUpInside)
+        self.footerView.addIcon.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
 
         menuView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 550)
         
@@ -44,18 +46,42 @@ class DetailMenuVC: UIViewController {
     }
     
     @objc func handleSettings() {
-        try? Auth.auth().signOut()
-        print("Logged out")
-        
-        if Auth.auth().currentUser == nil {
-            let loginController = RegistrationVC()
-            let navContoller = UINavigationController(rootViewController: loginController)
-            self.present(navContoller, animated: true)
-        }
+        showSettingsActionSheet()
     }
     
-    @objc fileprivate func handleSearch() {
+    func showSettingsActionSheet() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (action) in
+            print("Settings")
+        }
+        
+        let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { (action) in
+            try? Auth.auth().signOut()
+            print("Logged out")
+            
+            if Auth.auth().currentUser == nil {
+                
+                // Need to return to HomeVC view so that it looks normal when re-entering
+                
+                let loginController = RegistrationVC()
+                let navContoller = UINavigationController(rootViewController: loginController)
+                self.present(navContoller, animated: true)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        actionSheet.addAction(settingsAction)
+        actionSheet.addAction(logoutAction)
+        actionSheet.addAction(cancelAction)
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    @objc fileprivate func handleAdd() {
         let addSongController = AddSongVC()
+        addSongController.user = self.user
         present(addSongController, animated: true)
     }
     

@@ -10,6 +10,47 @@ import UIKit
 
 class AddSongVC: UIViewController {
     
+    var user: MusicUser!
+    
+    let playlistInstructionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Pick a Playlist"
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let top10PlaylistLabel: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Top 10 Playlist", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        //        button.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
+        button.backgroundColor = UIColor.lightText
+        button.isEnabled = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.layer.cornerRadius = 22
+        button.addTarget(self, action: #selector(handleTop10Tap), for: .touchUpInside)
+        return button
+    }()
+    
+    let hot10PlaylistLabel: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Hot 10 Playlist", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        //        button.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
+        button.backgroundColor = UIColor.lightText
+        button.isEnabled = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.layer.cornerRadius = 22
+        button.addTarget(self, action: #selector(handleHot10Tap), for: .touchUpInside)
+        return button
+    }()
+    
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Share something cool"
@@ -60,6 +101,10 @@ class AddSongVC: UIViewController {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupTapGesture()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         setupNotificationObservers()
     }
@@ -88,6 +133,21 @@ class AddSongVC: UIViewController {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapDismiss)))
     }
     
+    @objc fileprivate func handleTop10Tap() {
+        self.top10PlaylistLabel.backgroundColor = .white
+        self.top10PlaylistLabel.setTitleColor(.black, for: .normal)
+        self.hot10PlaylistLabel.backgroundColor = UIColor.lightText
+        
+        // playlist chosen = .text
+    }
+    
+    @objc fileprivate func handleHot10Tap() {
+        self.hot10PlaylistLabel.backgroundColor = .white
+        self.hot10PlaylistLabel.setTitleColor(.black, for: .normal)
+        self.top10PlaylistLabel.backgroundColor = UIColor.lightText
+        
+    }
+    
     @objc fileprivate func handleTapDismiss() {
         self.view.endEditing(true)
     }
@@ -106,8 +166,13 @@ class AddSongVC: UIViewController {
     }
     
     lazy var stackView = UIStackView(arrangedSubviews: [
+        playlistInstructionLabel,
+        SpacerViewHeight(space: 10),
+        top10PlaylistLabel,
+        hot10PlaylistLabel,
+        SpacerViewHeight(space: 50),
         subtitleLabel,
-        SpacerViewHeight(space: 75),
+        SpacerViewHeight(space: 10),
         addSongTextField,
         addSongButton
         ])
@@ -145,10 +210,8 @@ class AddSongVC: UIViewController {
         
         guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardFrame = value.cgRectValue
-        print(keyboardFrame)
         
         let bottomSpace = view.frame.height - stackView.frame.origin.y - stackView.frame.height
-        print(bottomSpace)
         
         let difference = keyboardFrame.height - bottomSpace
         self.view.transform = CGAffineTransform(translationX: 0, y: -difference - 8)

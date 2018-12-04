@@ -39,7 +39,7 @@ class TopTenPlaylistVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         fetchCurrentUser()
-        configureHeader()
+//        configureHeader()
     }
     
     var user: MusicUser!
@@ -56,8 +56,8 @@ class TopTenPlaylistVC: UITableViewController {
             // fetched our user here
             guard let dictionary = snapshot?.data() else { return }
             self.user = MusicUser(dictionary: dictionary)
-            
             self.tableView.reloadData() // need to reload table one more time
+            self.configureHeader()
         }
     }
     
@@ -70,14 +70,13 @@ class TopTenPlaylistVC: UITableViewController {
     }
     
     fileprivate func configureHeader() {
-        
-        print(self.user?.profileURL)
         let imageName = self.user?.profileURL ?? ""
         if let url = URL(string: imageName) {
             customHeaderView.profileImageView.sd_setImage(with: url)
         } else {
             // return the default image
         }
+        customHeaderView.playlistDesc.text = "A PLAYLIST BY \(user?.fullName.uppercased() ?? "USER")"
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

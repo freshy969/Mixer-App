@@ -22,12 +22,10 @@ class CustomPlaylistHeaderView: UIView {
     
     let profileImageView: UIImageView = {
         let iv = PlaylistProfileImageView()
-        iv.backgroundColor = .blue
         iv.contentMode = .scaleAspectFill
         iv.layer.cornerRadius = 100 / 2
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.clipsToBounds = true
-        iv.image = UIImage(named: "joe")
         return iv
     }()
     
