@@ -12,12 +12,16 @@ import SDWebImage
 
 class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     
-    var profilePic = "joe"
-    var username = "joelangenderfer" // Must capitalize
-    var playlistNameArray = ["Coding Jams", "Pregame Songs", "Cheery EDM", "Chillout Vibes", "My Top 10", "Chillout Vibes"]
-    var songArray = ["Divide", "No Problem", "Winnebago", "Some Odesza Song", "Closer", "Some Odesza Song"]
-    var artistArray = ["Odesza", "Chance the Rapper", "Gryffin", "Odesza", "The Chainsmokers", "Odesza"]
-    var albumCoverArray = ["odesza", "chance", "winn", "odesza2", "chainsmokers", "odesza3"]
+    var user: MusicUser!
+    var songs: Songs!
+    
+    var profilePic = ""
+    var username = "" // Must capitalize
+    var playlistNameArray = ["Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs", "Top Songs"]
+    var totalSongAray: [Song] = []
+//    var songArray = ["Divide", "No Problem", "Winnebago", "Some Odesza Song", "Closer", "Some Odesza Song"]
+//    var artistArray = ["Odesza", "Chance the Rapper", "Gryffin", "Odesza", "The Chainsmokers", "Odesza"]
+    var albumCoverArray = ["odesza", "chance", "winn", "odesza2", "chainsmokers", "odesza3", "odesza", "chance", "winn", "odesza2", "chainsmokers", "odesza3", "odesza", "chance", "winn", "odesza2", "chainsmokers", "odesza3"]
     
     let menuController = MenuVC()
     fileprivate let menuWidth: CGFloat = 300
@@ -27,6 +31,7 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         
         tableView.separatorStyle = .none
         self.tableView.register(TimelineTableViewCell.self, forCellReuseIdentifier: "cellId")
+        songs = Songs()
         fetchCurrentUser()
         setupNavigationBarItems()
     }
@@ -47,8 +52,6 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         setupRightNavigationButton()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .heavy)]
     }
-    
-    var user: MusicUser!
     
     fileprivate func setupCircularNavigationButton() {
         
@@ -89,6 +92,13 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         
     }
     
+    fileprivate func getPlaylistSongs() {
+        
+        self.songs.loadTop10SongData(user: self.user) {
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         fetchCurrentUser()
     }
@@ -106,6 +116,7 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
             guard let dictionary = snapshot?.data() else { return }
             self.user = MusicUser(dictionary: dictionary)
             
+            self.getPlaylistSongs()
             self.tableView.reloadData() // need to reload table one more time
             self.setupCircularNavigationButton()
         }
@@ -120,7 +131,7 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songArray.count
+        return songs.top10SongArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -128,13 +139,20 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! TimelineTableViewCell
         cell.selectionStyle = .none
 
-        cell.card.profilePictureButton.setImage(UIImage(named: profilePic)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        let imageName = self.user?.profileURL ?? ""
+        if let url = URL(string: imageName) {
+            cell.card.profilePictureButton.sd_setImage(with: url, for: .normal)
+        } else {
+            // return the default image
+        }
         // if profile picture is nil then show the placeholder image
         // will need to create another view with an image inside of it so that the background can be the averageColor
-        cell.card.usernameButtonLabel.text = "@" + username.uppercased()
+        cell.card.usernameButtonLabel.text = "@" + user.displayName.uppercased()
         cell.card.playlistNameButtonLabel.text = playlistNameArray[indexPath.row].capitalized
-        cell.card.songNameButtonLabel.text = songArray[indexPath.row]
-        cell.card.artistNameButtonLabel.text = artistArray[indexPath.row]
+        
+        cell.card.songNameButtonLabel.text = songs.top10SongArray[indexPath.row].name
+        cell.card.artistNameButtonLabel.text = songs.top10SongArray[indexPath.row].artist
+
         cell.card.albumImage.image = UIImage(named: albumCoverArray[indexPath.row])
         cell.card.likeTotalButtonLabel.text = "198 likes"
         cell.card.applyAverageColor()

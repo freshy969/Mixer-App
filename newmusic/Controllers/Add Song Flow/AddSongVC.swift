@@ -84,6 +84,16 @@ class AddSongVC: UIViewController {
         return tf
     }()
     
+    let addArtistTextField: CustomTextField = {
+        let tf = CustomTextField(padding: 18, height: 48)
+        tf.placeholder = "Add the Artist?"
+        tf.backgroundColor = .white
+        tf.textAlignment = .center
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        return tf
+    }()
+
+    
     let addSongButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Add Song", for: .normal)
@@ -126,17 +136,26 @@ class AddSongVC: UIViewController {
         
         if top10ButtonClicked == true {
             // Save song to Top 10 Playlist
+            // Check to see how many songs are in playlist
+            song.name = addSongTextField.text!
+            song.artist = addArtistTextField.text!
+            self.song.saveTop10Song(user: self.user) { (success) in
+//                print(self.user?.dictionary)
+            }
             print("Saving song to top 10...")
-//            self.song.saveTop10Song(user: self.user) { (success) in
-//                This will save it to the DB, now just have to fetch in each playlist and show it there
-//            }
         }
         
         if hot10buttonClicked == true {
             // Save song to Hot 10 Playlist
-            print("Saving song to top 10...")
+            song.name = addSongTextField.text!
+            song.artist = addArtistTextField.text!
+            self.song.saveHot10Song(user: self.user) { (success) in
+//                print(self.user?.dictionary)
+            }
+
+            print("Saving song to hot 10...")
         }
-        // segueu to BaseSlidingVC
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc fileprivate func handleQuit() {
@@ -148,7 +167,7 @@ class AddSongVC: UIViewController {
     }
     
     fileprivate func handleViewInput() {
-        let isFormValid = self.addSongTextField.text?.isEmpty != true && (top10ButtonClicked == true || hot10buttonClicked == true)
+        let isFormValid = self.addSongTextField.text?.isEmpty != true && self.addArtistTextField.text?.isEmpty != true && (top10ButtonClicked == true || hot10buttonClicked == true)
         
         if isFormValid {
             self.addSongButton.isEnabled = true
@@ -164,6 +183,7 @@ class AddSongVC: UIViewController {
     fileprivate func fetchCurrentUser() {
         // fetch some Firestore Data
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        user.documentID = uid
         Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, err) in
             if let err = err {
                 print(err)
@@ -173,7 +193,6 @@ class AddSongVC: UIViewController {
             // fetched our user here
             guard let dictionary = snapshot?.data() else { return }
             self.user = MusicUser(dictionary: dictionary)
-            print(self.user?.dictionary)
         }
     }
     
@@ -228,6 +247,7 @@ class AddSongVC: UIViewController {
         subtitleLabel,
         SpacerViewHeight(space: 10),
         addSongTextField,
+        addArtistTextField,
         addSongButton
         ])
     

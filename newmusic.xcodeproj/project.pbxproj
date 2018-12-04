@@ -13,6 +13,7 @@
 		D8071E9621B4953B0078AD3D /* AlbumCollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E9521B4953B0078AD3D /* AlbumCollageView.swift */; };
 		D8071E9A21B4FCEB0078AD3D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E9821B4FCEA0078AD3D /* LoginVC.swift */; };
 		D83D333121B6CA9400DA2EC9 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83D333021B6CA9400DA2EC9 /* Song.swift */; };
+		D83D333521B7094300DA2EC9 /* Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83D333421B7094300DA2EC9 /* Songs.swift */; };
 		D851302B21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D851302A21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift */; };
 		D851302E21B0F9690031FDF4 /* BaseSlidingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D851302D21B0F9690031FDF4 /* BaseSlidingVC.swift */; };
 		D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDEC421AE56540007ACBC /* MenuVC.swift */; };
@@ -54,6 +55,7 @@
 		D8071E9521B4953B0078AD3D /* AlbumCollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollageView.swift; sourceTree = "<group>"; };
 		D8071E9821B4FCEA0078AD3D /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		D83D333021B6CA9400DA2EC9 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		D83D333421B7094300DA2EC9 /* Songs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Songs.swift; sourceTree = "<group>"; };
 		D851302A21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffCenteredActionButtonView.swift; sourceTree = "<group>"; };
 		D851302D21B0F9690031FDF4 /* BaseSlidingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlidingVC.swift; sourceTree = "<group>"; };
 		D87FDEC421AE56540007ACBC /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			children = (
 				D88CB73E21B3A87E008537BA /* MusicUser.swift */,
 				D83D333021B6CA9400DA2EC9 /* Song.swift */,
+				D83D333421B7094300DA2EC9 /* Songs.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				D8840D7021B2261D00B858CD /* QueueListVC.swift in Sources */,
 				D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */,
 				D87FDED221AEEC3A0007ACBC /* CustomMenuHeaderView.swift in Sources */,
+				D83D333521B7094300DA2EC9 /* Songs.swift in Sources */,
 				D8F076CF219F841200E08006 /* AppDelegate.swift in Sources */,
 				D83D333121B6CA9400DA2EC9 /* Song.swift in Sources */,
 				D8E0746521B0426F00B47951 /* PostActionButtonView.swift in Sources */,

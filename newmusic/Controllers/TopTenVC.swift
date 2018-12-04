@@ -35,14 +35,22 @@ class TopTenPlaylistVC: UITableViewController {
         
         self.tableView.register(PlaylistDetailTableViewCell.self, forCellReuseIdentifier: "PlaylistCell")
         loadUserPhotos()
+        songs = Songs()
+        fetchCurrentUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchCurrentUser()
-//        configureHeader()
     }
     
     var user: MusicUser!
+    var songs: Songs!
+    
+    fileprivate func getPlaylistSongs() {
+        
+        self.songs.loadTop10SongData(user: self.user) {
+            self.tableView.reloadData()
+        }
+    }
     
     fileprivate func fetchCurrentUser() {
         // fetch some Firestore Data
@@ -56,8 +64,9 @@ class TopTenPlaylistVC: UITableViewController {
             // fetched our user here
             guard let dictionary = snapshot?.data() else { return }
             self.user = MusicUser(dictionary: dictionary)
-            self.tableView.reloadData() // need to reload table one more time
             self.configureHeader()
+            self.getPlaylistSongs()
+            self.tableView.reloadData()
         }
     }
     
@@ -88,12 +97,13 @@ class TopTenPlaylistVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.songs.top10SongArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistDetailTableViewCell
-        cell.textLabel?.text = "Favorite Song Ever #\(indexPath.row)"
+        cell.songNameLabel.text = "\(indexPath.row). " + self.songs.top10SongArray[indexPath.row].name
+        cell.artistNameLabel.text = self.songs.top10SongArray[indexPath.row].artist
         return cell
     }
     
