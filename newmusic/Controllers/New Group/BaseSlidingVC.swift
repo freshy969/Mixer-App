@@ -182,7 +182,6 @@ class BaseSlidingVC: UIViewController, LoginControllerDelegate {
     
     fileprivate func performAnimations() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            // leave a reference link down in desc below
             self.view.layoutIfNeeded()
             self.coverView.alpha = self.isMenuOpened ? 1 : 0
         })
@@ -245,5 +244,4 @@ class BaseSlidingVC: UIViewController, LoginControllerDelegate {
         addChild(rightViewController)
         addChild(menuController)
     }
-
 }

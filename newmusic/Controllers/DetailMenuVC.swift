@@ -27,6 +27,7 @@ class DetailMenuVC: UIViewController {
         
         menuController.customHeaderView.settingsButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
         self.footerView.addIcon.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
+        self.footerView.searchIcon.addTarget(self, action: #selector(handleSearch), for: .touchUpInside)
 
         menuView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 550)
         
@@ -85,6 +86,11 @@ class DetailMenuVC: UIViewController {
         present(addSongController, animated: true)
     }
     
+    @objc fileprivate func handleSearch() {
+        let searchController = SearchVC()
+//        searchController.user = self.user
+        present(searchController, animated: true)
+    }
 }
 
 class FooterView: UIView {

@@ -50,7 +50,7 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         navigationItem.title = "Your New Music"
         setupCircularNavigationButton()
         setupRightNavigationButton()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .heavy)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .heavy)]
     }
     
     fileprivate func setupCircularNavigationButton() {
@@ -165,6 +165,6 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 475
+        return 485
     }
 }

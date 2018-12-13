@@ -27,12 +27,13 @@ class TopTenPlaylistVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Top 10"
         
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
+        navigationItem.title = "Your Top Ten"
         
+        // self.clearsSelectionOnViewWillAppear = false
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+
+            
         self.tableView.register(PlaylistDetailTableViewCell.self, forCellReuseIdentifier: "PlaylistCell")
         loadUserPhotos()
         songs = Songs()
@@ -53,7 +54,6 @@ class TopTenPlaylistVC: UITableViewController {
     }
     
     fileprivate func fetchCurrentUser() {
-        // fetch some Firestore Data
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, err) in
             if let err = err {
@@ -102,7 +102,7 @@ class TopTenPlaylistVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistDetailTableViewCell
-        cell.songNameLabel.text = "\(indexPath.row). " + self.songs.top10SongArray[indexPath.row].name
+        cell.songNameLabel.text = "\(indexPath.row + 1). " + self.songs.top10SongArray[indexPath.row].name
         cell.artistNameLabel.text = self.songs.top10SongArray[indexPath.row].artist
         return cell
     }

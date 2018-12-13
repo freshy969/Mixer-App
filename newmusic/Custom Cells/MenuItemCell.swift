@@ -10,7 +10,7 @@ import UIKit
 
 class IconImageView: UIImageView {
     override var intrinsicContentSize: CGSize {
-        return .init(width: 30, height: 30)
+        return .init(width: 22.5, height: 22.5)
     }
 }
 
@@ -46,7 +46,7 @@ class MenuItemCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 12
+        stackView.spacing = 17.5
         
         titleLabel.text = "Profile"
         

@@ -11,8 +11,6 @@ import Firebase
 
 class Song {
     
-    // look at how review was added, and how user was passed to the review page
-    
     var name: String
     var artist: String
     var playlist: String
@@ -69,20 +67,21 @@ class Song {
             let ref = db.collection("users").document(user.documentID).collection("top10").document(self.documentID)
             ref.setData(dataToSave) { (error) in
                 if let error = error {
-                    print("ERROR: updating document \(self.documentID) in spot \(user.documentID) \(error.localizedDescription)")
+                    print("ERROR: updating document \(self.documentID) for user \(user.documentID) \(error.localizedDescription)")
                     completed(false)
                 }
                 else {
                     print("Document updated with ref ID \(ref.documentID)")
-                    // song added
+                    // song updated
                 }
             }
         }
         else {
             var ref: DocumentReference? = nil
             ref = db.collection("users").document(user.documentID).collection("top10").addDocument(data: dataToSave) { error in
+                // now going to need to go into playlists then into whatever the playlist is (going to need to pass in a Playlist? )
                 if let error = error {
-                    print("ERROR: updating spot \(user.documentID) for new review documentID \(self.documentID) \(error.localizedDescription)")
+                    print("ERROR: updating user \(user.documentID) for new playlist documentID \(self.documentID) \(error.localizedDescription)")
                     completed(false)
                 }
                 else {

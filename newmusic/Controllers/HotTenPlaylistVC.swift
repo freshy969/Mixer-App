@@ -25,12 +25,12 @@ class HotTenPlaylistVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Hot 10"
         
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
+        navigationItem.title = "Your Hot Ten"
         
+        // self.clearsSelectionOnViewWillAppear = false
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+
         self.tableView.register(PlaylistDetailTableViewCell.self, forCellReuseIdentifier: "PlaylistCell")
         loadUserPhotos()
         songs = Songs()
@@ -102,7 +102,7 @@ class HotTenPlaylistVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistDetailTableViewCell
-        cell.songNameLabel.text = "\(indexPath.row). " + self.songs.hot10SongArray[indexPath.row].name
+        cell.songNameLabel.text = "\(indexPath.row + 1). " + self.songs.hot10SongArray[indexPath.row].name
         cell.artistNameLabel.text = self.songs.hot10SongArray[indexPath.row].artist
         return cell
     }
