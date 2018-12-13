@@ -143,7 +143,7 @@ class AddSongVC: UIViewController {
     @objc fileprivate func handleAddSong() {
         // Need to fetch current user, then stuff the song in a new collection (playlist) in that user
         print("Song was Added")
-        
+         
         // store song
         
         if top10ButtonClicked == true {
