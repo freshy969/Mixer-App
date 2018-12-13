@@ -15,6 +15,7 @@ class AddSongVC: UIViewController {
     
     var top10ButtonClicked = false
     var hot10buttonClicked = false
+    var otherButtonClicked = false
     
     let playlistInstructionLabel: UILabel = {
         let label = UILabel()
@@ -54,6 +55,8 @@ class AddSongVC: UIViewController {
         button.addTarget(self, action: #selector(handleHot10Tap), for: .touchUpInside)
         return button
     }()
+    
+    let otherPlaylistLabel = OtherPlaylistButton()
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
@@ -110,6 +113,8 @@ class AddSongVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupOtherPlaylistLabel()
         setupTapGesture()
         setupGradientLayer()
         setupView()
@@ -126,6 +131,13 @@ class AddSongVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         setupNotificationObservers()
+    }
+    
+    fileprivate func setupOtherPlaylistLabel() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleOtherTap))
+        otherPlaylistLabel.addGestureRecognizer(tap)
+        otherPlaylistLabel.otherPlaylistLabel.addTarget(self, action: #selector(handleOtherTap), for: .touchUpInside)
+        otherPlaylistLabel.downIcon.addTarget(self, action: #selector(handleOtherTap), for: .touchUpInside)
     }
     
     @objc fileprivate func handleAddSong() {
@@ -167,7 +179,7 @@ class AddSongVC: UIViewController {
     }
     
     fileprivate func handleViewInput() {
-        let isFormValid = self.addSongTextField.text?.isEmpty != true && self.addArtistTextField.text?.isEmpty != true && (top10ButtonClicked == true || hot10buttonClicked == true)
+        let isFormValid = self.addSongTextField.text?.isEmpty != true && self.addArtistTextField.text?.isEmpty != true && (top10ButtonClicked == true || hot10buttonClicked == true || otherButtonClicked == true)
         
         if isFormValid {
             self.addSongButton.isEnabled = true
@@ -203,22 +215,45 @@ class AddSongVC: UIViewController {
     @objc fileprivate func handleTop10Tap() {
         top10ButtonClicked = true
         hot10buttonClicked = false
+//        otherButtonClicked = false
         handleViewInput()
         self.top10PlaylistLabel.backgroundColor = .white
         self.top10PlaylistLabel.setTitleColor(.black, for: .normal)
         self.hot10PlaylistLabel.backgroundColor = UIColor.lightText
-        
+        self.hot10PlaylistLabel.setTitleColor(.white, for: .normal)
+        otherPlaylistLabel.backgroundColor = UIColor.lightText
+        otherPlaylistLabel.otherPlaylistLabel.setTitleColor(.white, for: .normal)
+        otherPlaylistLabel.downIcon.setImage(UIImage(named: "downArrowWhite"), for: .normal)
         // playlist chosen = .text
     }
     
     @objc fileprivate func handleHot10Tap() {
         hot10buttonClicked = true
         top10ButtonClicked = false
+//        otherButtonClicked = false
         handleViewInput()
         self.hot10PlaylistLabel.backgroundColor = .white
         self.hot10PlaylistLabel.setTitleColor(.black, for: .normal)
         self.top10PlaylistLabel.backgroundColor = UIColor.lightText
+        self.top10PlaylistLabel.setTitleColor(.white, for: .normal)
+        otherPlaylistLabel.backgroundColor = UIColor.lightText
+        otherPlaylistLabel.otherPlaylistLabel.setTitleColor(.white, for: .normal)
+        otherPlaylistLabel.downIcon.setImage(UIImage(named: "downArrowWhite"), for: .normal)
         
+    }
+    
+    @objc fileprivate func handleOtherTap() {
+//        otherButtonClicked needs to be set to true after another playlist is selected
+//        otherButtonClicked = true
+        hot10buttonClicked = false
+        top10ButtonClicked = false
+        otherPlaylistLabel.backgroundColor = .white
+        otherPlaylistLabel.otherPlaylistLabel.setTitleColor(.black, for: .normal)
+        otherPlaylistLabel.downIcon.setImage(UIImage(named: "downArrowBlack"), for: .normal)
+        self.top10PlaylistLabel.backgroundColor = UIColor.lightText
+        self.top10PlaylistLabel.setTitleColor(.white, for: .normal)
+        self.hot10PlaylistLabel.backgroundColor = UIColor.lightText
+        self.hot10PlaylistLabel.setTitleColor(.white, for: .normal)
     }
     
     @objc fileprivate func handleTapDismiss() {
@@ -243,6 +278,7 @@ class AddSongVC: UIViewController {
         SpacerViewHeight(space: 10),
         top10PlaylistLabel,
         hot10PlaylistLabel,
+        otherPlaylistLabel,
         SpacerViewHeight(space: 50),
         subtitleLabel,
         SpacerViewHeight(space: 10),

@@ -28,7 +28,7 @@ class TopTenPlaylistVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Your Top Ten"
+        navigationItem.title = "Top 10"
         
         // self.clearsSelectionOnViewWillAppear = false
         self.navigationItem.rightBarButtonItem = self.editButtonItem

@@ -13,6 +13,7 @@ class PlaylistListVC: UITableViewController {
     
     var user: MusicUser!
     var playlist: Playlist!
+    var playlists: Playlists!
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
@@ -49,6 +50,7 @@ class PlaylistListVC: UITableViewController {
         if playlist == nil {
             playlist = Playlist()
         }
+        playlists = Playlists()
         fetchCurrentUser()
     }
     
@@ -63,7 +65,13 @@ class PlaylistListVC: UITableViewController {
             // fetched our user here
             guard let dictionary = snapshot?.data() else { return }
             self.user = MusicUser(dictionary: dictionary)
-//            self.getPlaylists()
+            self.getPlaylists()
+            self.tableView.reloadData()
+        }
+    }
+    
+    fileprivate func getPlaylists() {
+        self.playlists.loadPlaylists(user: self.user) {
             self.tableView.reloadData()
         }
     }
@@ -99,12 +107,11 @@ class PlaylistListVC: UITableViewController {
     // MARK: - Table view data source
     
 //    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
 //        return 2
 //    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return playlists.playlistArray.count + 2
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -112,15 +119,19 @@ class PlaylistListVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistListCell", for: indexPath) as! PlaylistListTableViewCell
         //        cell.textLabel?.text = subtitleLabel.text
         
         if indexPath.row == 0 {
-            cell.playlistNameLabel.text = "Top Ten"
+            cell.playlistNameLabel.text = "Your Top 10"
+            cell.playlistSubtitleLabel.text = "Your ten favorite songs of all time"
         } else if indexPath.row == 1 {
-            cell.playlistNameLabel.text = "Hot Ten"
+            cell.playlistNameLabel.text = "Your Hot 10"
+            cell.playlistSubtitleLabel.text = "Your ten favorite songs right now"
         } else {
-            cell.playlistNameLabel.text = "Some Random Playlist"
+            cell.playlistNameLabel.text = self.playlists.playlistArray[indexPath.row - 2].name
+            cell.playlistSubtitleLabel.text = "\(self.playlists.playlistArray[indexPath.row - 2].numberOfSongs) Songs"
         }
         return cell
     }

@@ -71,3 +71,11 @@ class ActionButtonBackgroundView: UIView {
     }
 }
 
+class AddOtherPlaylistActionButtonImageView: UIButton {
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: 10, height: 10)
+    }
+}
+
+

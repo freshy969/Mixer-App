@@ -18,6 +18,15 @@ class PlaylistListTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    let playlistSubtitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textColor = UIColor.gray
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,9 +39,15 @@ class PlaylistListTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        addSubview(playlistNameLabel)
-        playlistNameLabel.anchor(top: nil, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: 200, height: 24)
-        playlistNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        let stackView = UIStackView(arrangedSubviews: [
+            playlistNameLabel,
+            playlistSubtitleLabel
+            ])
+        
+        addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.anchor(top: nil, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: 300, height: 40)
+        stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         // Configure the view for the selected state
     }
 

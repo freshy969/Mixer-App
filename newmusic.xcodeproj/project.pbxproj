@@ -20,6 +20,8 @@
 		D8628A6721C1DF2800547415 /* PlaylistListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8628A6621C1DF2800547415 /* PlaylistListVC.swift */; };
 		D8628A6921C2122500547415 /* PlaylistListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8628A6821C2122500547415 /* PlaylistListTableViewCell.swift */; };
 		D8628A6B21C2323800547415 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8628A6A21C2323800547415 /* Playlist.swift */; };
+		D8628A6D21C2A7C400547415 /* Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8628A6C21C2A7C400547415 /* Playlists.swift */; };
+		D8628A7021C2B48900547415 /* AddOtherPlaylistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8628A6F21C2B48900547415 /* AddOtherPlaylistButton.swift */; };
 		D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDEC421AE56540007ACBC /* MenuVC.swift */; };
 		D87FDED221AEEC3A0007ACBC /* CustomMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */; };
 		D87FDED421AEF0DF0007ACBC /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED321AEF0DF0007ACBC /* SpacerView.swift */; };
@@ -65,6 +67,8 @@
 		D8628A6621C1DF2800547415 /* PlaylistListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListVC.swift; sourceTree = "<group>"; };
 		D8628A6821C2122500547415 /* PlaylistListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListTableViewCell.swift; sourceTree = "<group>"; };
 		D8628A6A21C2323800547415 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		D8628A6C21C2A7C400547415 /* Playlists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlists.swift; sourceTree = "<group>"; };
+		D8628A6F21C2B48900547415 /* AddOtherPlaylistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOtherPlaylistButton.swift; sourceTree = "<group>"; };
 		D87FDEC421AE56540007ACBC /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuHeaderView.swift; sourceTree = "<group>"; };
 		D87FDED321AEF0DF0007ACBC /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				D8E0746421B0426F00B47951 /* PostActionButtonView.swift */,
 				D851302A21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift */,
 				D8A0977621B35CFB00975E54 /* SignUpButtonView.swift */,
+				D8628A6F21C2B48900547415 /* AddOtherPlaylistButton.swift */,
 				D896614321B3D12B00136804 /* CustomTextField.swift */,
 				D87FDED521AEF5690007ACBC /* ImageViewSizes.swift */,
 			);
@@ -203,6 +208,7 @@
 			children = (
 				D88CB73E21B3A87E008537BA /* MusicUser.swift */,
 				D8628A6A21C2323800547415 /* Playlist.swift */,
+				D8628A6C21C2A7C400547415 /* Playlists.swift */,
 				D83D333021B6CA9400DA2EC9 /* Song.swift */,
 				D83D333421B7094300DA2EC9 /* Songs.swift */,
 			);
@@ -438,11 +444,13 @@
 				D8E0746521B0426F00B47951 /* PostActionButtonView.swift in Sources */,
 				D8840D7821B276C500B858CD /* SearchVC.swift in Sources */,
 				D8071E9A21B4FCEB0078AD3D /* LoginVC.swift in Sources */,
+				D8628A6D21C2A7C400547415 /* Playlists.swift in Sources */,
 				D8071E9621B4953B0078AD3D /* AlbumCollageView.swift in Sources */,
 				D8628A6B21C2323800547415 /* Playlist.swift in Sources */,
 				D8071E8E21B46C730078AD3D /* RegistrationStep2VC.swift in Sources */,
 				D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */,
 				D87FDED821AEFECF0007ACBC /* MenuItemCell.swift in Sources */,
+				D8628A7021C2B48900547415 /* AddOtherPlaylistButton.swift in Sources */,
 				D8840D7621B25FD100B858CD /* DetailMenuVC.swift in Sources */,
 				D851302E21B0F9690031FDF4 /* BaseSlidingVC.swift in Sources */,
 				D8E5EFD221B5A71B00CD4B0C /* TopTenVC.swift in Sources */,

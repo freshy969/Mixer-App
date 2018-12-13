@@ -34,7 +34,7 @@ class Songs {
                 let song = Song(dictionary: document.data())
                 song.documentID = document.documentID
                 self.top10SongArray.append(song)
-                print(song)
+//                print(song)
             }
             completed()
         }
