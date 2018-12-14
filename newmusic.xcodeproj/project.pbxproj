@@ -12,6 +12,7 @@
 		D8071E9421B48EE40078AD3D /* PlaylistDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E9321B48EE40078AD3D /* PlaylistDetailTableViewCell.swift */; };
 		D8071E9621B4953B0078AD3D /* AlbumCollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E9521B4953B0078AD3D /* AlbumCollageView.swift */; };
 		D8071E9A21B4FCEB0078AD3D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8071E9821B4FCEA0078AD3D /* LoginVC.swift */; };
+		D816BA4521C35C2E0029ECD4 /* SelectPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D816BA4421C35C2E0029ECD4 /* SelectPlaylistVC.swift */; };
 		D83D333121B6CA9400DA2EC9 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83D333021B6CA9400DA2EC9 /* Song.swift */; };
 		D83D333521B7094300DA2EC9 /* Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83D333421B7094300DA2EC9 /* Songs.swift */; };
 		D851302B21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D851302A21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift */; };
@@ -59,6 +60,7 @@
 		D8071E9321B48EE40078AD3D /* PlaylistDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailTableViewCell.swift; sourceTree = "<group>"; };
 		D8071E9521B4953B0078AD3D /* AlbumCollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollageView.swift; sourceTree = "<group>"; };
 		D8071E9821B4FCEA0078AD3D /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		D816BA4421C35C2E0029ECD4 /* SelectPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaylistVC.swift; sourceTree = "<group>"; };
 		D83D333021B6CA9400DA2EC9 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		D83D333421B7094300DA2EC9 /* Songs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Songs.swift; sourceTree = "<group>"; };
 		D851302A21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffCenteredActionButtonView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				D8840D7121B2268800B858CD /* AddSongVC.swift */,
+				D816BA4421C35C2E0029ECD4 /* SelectPlaylistVC.swift */,
 			);
 			path = "Add Song Flow";
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				D8628A6921C2122500547415 /* PlaylistListTableViewCell.swift in Sources */,
 				D8E5EFD021B5A65B00CD4B0C /* PlaylistDetailVC.swift in Sources */,
 				D87FDED621AEF5690007ACBC /* ImageViewSizes.swift in Sources */,
+				D816BA4521C35C2E0029ECD4 /* SelectPlaylistVC.swift in Sources */,
 				D8A0977121B3427D00975E54 /* HotTenPlaylistVC.swift in Sources */,
 				D8071E9421B48EE40078AD3D /* PlaylistDetailTableViewCell.swift in Sources */,
 				D8E0745D21B032A200B47951 /* HomeVC.swift in Sources */,

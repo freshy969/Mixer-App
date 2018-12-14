@@ -53,7 +53,7 @@ class Playlist {
         
         if self.documentID != "" {
             // the playlist already exists (so we are just updating it)
-            let ref = db.collection("users").document(user.documentID).collection("playlists").document(self.documentID)
+            let ref = db.collection("users").document(user.documentID).collection("custom-playlists").document(self.documentID)
             ref.setData(dataToSave) { (error) in
                 if let error = error {
                     print("ERROR: updating document \(self.documentID) for user \(user.documentID) \(error.localizedDescription)")
@@ -67,7 +67,7 @@ class Playlist {
         } else {
             // adding the playlist for the first time
             var ref: DocumentReference? = nil
-            ref = db.collection("users").document(user.documentID).collection("playlists").addDocument(data: dataToSave) { error in
+            ref = db.collection("users").document(user.documentID).collection("custom-playlists").addDocument(data: dataToSave) { error in
                 if let error = error {
                     print("ERROR: updating user \(user.documentID) for new playlist documentID \(self.documentID) \(error.localizedDescription)")
                     completed(false)

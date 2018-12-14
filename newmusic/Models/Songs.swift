@@ -23,7 +23,7 @@ class Songs {
     func loadTop10SongData(user: MusicUser, completed: @escaping () -> ()) {
         user.documentID = (Auth.auth().currentUser?.uid)!
         
-        db.collection("users").document(user.documentID).collection("top10").addSnapshotListener { (querySnapshot, error) in
+        db.collection("users").document(user.documentID).collection("top-ten-playlist").addSnapshotListener { (querySnapshot, error) in
             guard error == nil else {
                 print("ERROR: adding the snapshot listener \(error!.localizedDescription)")
                 return completed()
@@ -43,7 +43,7 @@ class Songs {
     func loadHot10SongData(user: MusicUser, completed: @escaping () -> ()) {
         user.documentID = (Auth.auth().currentUser?.uid)!
         
-        db.collection("users").document(user.documentID).collection("hot10").addSnapshotListener { (querySnapshot, error) in
+        db.collection("users").document(user.documentID).collection("hot-ten-playlist").addSnapshotListener { (querySnapshot, error) in
             guard error == nil else {
                 print("ERROR: adding the snapshot listener \(error!.localizedDescription)")
                 return completed()

@@ -9,13 +9,26 @@
 import UIKit
 import Firebase
 
-class AddSongVC: UIViewController {
+protocol isAbleToReceiveData {
+    func pass(data: Playlist)
+}
+
+class AddSongVC: UIViewController, isAbleToReceiveData {
     
     var song: Song!
+    var user: MusicUser!
+    var selectedPlaylist: Playlist!
     
     var top10ButtonClicked = false
     var hot10buttonClicked = false
     var otherButtonClicked = false
+    
+    func pass(data: Playlist) {
+        // set up the button text
+        selectedPlaylist = data
+        otherPlaylistLabel.otherPlaylistLabel.setTitle(selectedPlaylist.name, for: .normal)
+        otherButtonClicked = true
+    }
     
     let playlistInstructionLabel: UILabel = {
         let label = UILabel()
@@ -127,6 +140,7 @@ class AddSongVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupTapGesture()
+        print(selectedPlaylist?.name ?? "")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -142,8 +156,6 @@ class AddSongVC: UIViewController {
     
     @objc fileprivate func handleAddSong() {
         // Need to fetch current user, then stuff the song in a new collection (playlist) in that user
-        print("Song was Added")
-         
         // store song
         
         if top10ButtonClicked == true {
@@ -167,6 +179,14 @@ class AddSongVC: UIViewController {
 
             print("Saving song to hot 10...")
         }
+        
+        if otherButtonClicked == true {
+            song.name = addSongTextField.text!
+            song.artist = addArtistTextField.text!
+            self.song.saveCustomPlaylistSong(user: self.user, playlist: self.selectedPlaylist) { (success) in
+            }
+        }
+        print("Song was Added")
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -189,8 +209,6 @@ class AddSongVC: UIViewController {
             self.addSongButton.backgroundColor = UIColor.lightText
         }
     }
-    
-    var user: MusicUser!
     
     fileprivate func fetchCurrentUser() {
         // fetch some Firestore Data
@@ -215,7 +233,7 @@ class AddSongVC: UIViewController {
     @objc fileprivate func handleTop10Tap() {
         top10ButtonClicked = true
         hot10buttonClicked = false
-//        otherButtonClicked = false
+        otherButtonClicked = false
         handleViewInput()
         self.top10PlaylistLabel.backgroundColor = .white
         self.top10PlaylistLabel.setTitleColor(.black, for: .normal)
@@ -230,7 +248,7 @@ class AddSongVC: UIViewController {
     @objc fileprivate func handleHot10Tap() {
         hot10buttonClicked = true
         top10ButtonClicked = false
-//        otherButtonClicked = false
+        otherButtonClicked = false
         handleViewInput()
         self.hot10PlaylistLabel.backgroundColor = .white
         self.hot10PlaylistLabel.setTitleColor(.black, for: .normal)
@@ -239,12 +257,12 @@ class AddSongVC: UIViewController {
         otherPlaylistLabel.backgroundColor = UIColor.lightText
         otherPlaylistLabel.otherPlaylistLabel.setTitleColor(.white, for: .normal)
         otherPlaylistLabel.downIcon.setImage(UIImage(named: "downArrowWhite"), for: .normal)
-        
     }
     
     @objc fileprivate func handleOtherTap() {
 //        otherButtonClicked needs to be set to true after another playlist is selected
 //        otherButtonClicked = true
+        handleOtherButton()
         hot10buttonClicked = false
         top10ButtonClicked = false
         otherPlaylistLabel.backgroundColor = .white
@@ -254,6 +272,12 @@ class AddSongVC: UIViewController {
         self.top10PlaylistLabel.setTitleColor(.white, for: .normal)
         self.hot10PlaylistLabel.backgroundColor = UIColor.lightText
         self.hot10PlaylistLabel.setTitleColor(.white, for: .normal)
+    }
+    
+    fileprivate func handleOtherButton() {
+        let selectPlaylistController = SelectPlaylistVC()
+        selectPlaylistController.delegate = self
+        present(selectPlaylistController, animated: true)
     }
     
     @objc fileprivate func handleTapDismiss() {
@@ -288,7 +312,6 @@ class AddSongVC: UIViewController {
         ])
     
     fileprivate func setupStackView() {
-        
         view.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -297,7 +320,6 @@ class AddSongVC: UIViewController {
         
         stackView.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 30, paddingLeft: 50, paddingBottom: 0, paddingRight: 50, width: 0, height: 0)
         stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
     }
     
     fileprivate func setupNotificationObservers() {

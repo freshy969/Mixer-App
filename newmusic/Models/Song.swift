@@ -64,7 +64,7 @@ class Song {
         let dataToSave = self.dictionary
         
         if self.documentID != "" {
-            let ref = db.collection("users").document(user.documentID).collection("top10").document(self.documentID)
+            let ref = db.collection("users").document(user.documentID).collection("top-ten-playlist").document(self.documentID)
             ref.setData(dataToSave) { (error) in
                 if let error = error {
                     print("ERROR: updating document \(self.documentID) for user \(user.documentID) \(error.localizedDescription)")
@@ -78,10 +78,10 @@ class Song {
         }
         else {
             var ref: DocumentReference? = nil
-            ref = db.collection("users").document(user.documentID).collection("top10").addDocument(data: dataToSave) { error in
+            ref = db.collection("users").document(user.documentID).collection("top-ten-playlist").addDocument(data: dataToSave) { error in
                 // now going to need to go into playlists then into whatever the playlist is (going to need to pass in a Playlist? )
                 if let error = error {
-                    print("ERROR: updating user \(user.documentID) for new playlist documentID \(self.documentID) \(error.localizedDescription)")
+                    print("ERROR: updating user \(user.documentID) for new song documentID \(self.documentID) \(error.localizedDescription)")
                     completed(false)
                 }
                 else {
@@ -99,10 +99,10 @@ class Song {
         
         let dataToSave = self.dictionary
         if self.documentID != "" {
-            let ref = db.collection("users").document(user.documentID).collection("hot10").document(self.documentID)
+            let ref = db.collection("users").document(user.documentID).collection("hot-ten-playlist").document(self.documentID)
             ref.setData(dataToSave) { (error) in
                 if let error = error {
-                    print("ERROR: updating document \(self.documentID) in spot \(user.documentID) \(error.localizedDescription)")
+                    print("ERROR: updating document \(self.documentID) in user \(user.documentID) \(error.localizedDescription)")
                     completed(false)
                 }
                 else {
@@ -114,9 +114,46 @@ class Song {
             
         else {
             var ref: DocumentReference? = nil
-            ref = db.collection("users").document(user.documentID).collection("hot10").addDocument(data: dataToSave) { error in
+            ref = db.collection("users").document(user.documentID).collection("hot-ten-playlist").addDocument(data: dataToSave) { error in
                 if let error = error {
-                    print("ERROR: updating spot \(user.documentID) for new review documentID \(self.documentID) \(error.localizedDescription)")
+                    print("ERROR: updating user \(user.documentID) for new song documentID \(self.documentID) \(error.localizedDescription)")
+                    completed(false)
+                }
+                else {
+                    print("New document created with ref ID \(ref?.documentID ?? "unknown")")
+                    // new song added
+                    
+                }
+            }
+        }
+    }
+    
+    func saveCustomPlaylistSong(user: MusicUser, playlist: Playlist, completed: @escaping (Bool) -> ()) {
+        
+        user.documentID = (Auth.auth().currentUser?.uid)!
+        
+        let db = Firestore.firestore()
+        
+        let dataToSave = self.dictionary
+        if self.documentID != "" {
+            let ref = db.collection("users").document(user.documentID).collection("custom-playlists").document(playlist.documentID).collection("songs").document(self.documentID)
+            ref.setData(dataToSave) { (error) in
+                if let error = error {
+                    print("ERROR: updating document \(self.documentID) in user \(user.documentID) \(error.localizedDescription)")
+                    completed(false)
+                }
+                else {
+                    print("Document updated with ref ID \(ref.documentID)")
+                    // song added
+                }
+            }
+        }
+            
+        else {
+            var ref: DocumentReference? = nil
+            ref = db.collection("users").document(user.documentID).collection("custom-playlists").document(playlist.documentID).collection("songs").addDocument(data: dataToSave) { error in
+                if let error = error {
+                    print("ERROR: updating user \(user.documentID) for new song documentID \(self.documentID) \(error.localizedDescription)")
                     completed(false)
                 }
                 else {
