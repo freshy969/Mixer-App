@@ -81,8 +81,7 @@ class DetailMenuVC: UIViewController {
     }
     
     @objc fileprivate func handleAdd() {
-        let addSongController = AddSongVC()
-        addSongController.user = self.user
+        let addSongController = UINavigationController(rootViewController: AddSongVC())
         present(addSongController, animated: true)
     }
     

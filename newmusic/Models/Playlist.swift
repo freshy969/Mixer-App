@@ -79,4 +79,14 @@ class Playlist {
             }
         }
     }
+    
+    func deletePlaylist(user: MusicUser, completed: @escaping (Bool) -> ()) {
+        let db = Firestore.firestore()
+        db.collection("users").document(user.documentID).collection("custom-playlists").document(self.documentID).delete() { error in
+            if let error = error {
+                print("ERROR: Deleting playlist documentID \(self.documentID) \(error.localizedDescription)")
+            }
+            completed(true)
+        }
+    }
 }

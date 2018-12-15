@@ -15,10 +15,11 @@ class OtherPlaylistButton: UIView {
         button.setTitle("Other Playlist", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        button.frame.size = CGSize(width: 50, height: 10)
         return button
     }()
     
-    let downIcon = AddOtherPlaylistActionButtonImageView()
+    let arrowIcon = AddOtherPlaylistActionButtonImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +30,7 @@ class OtherPlaylistButton: UIView {
         self.heightAnchor.constraint(equalToConstant: 50).isActive = true
         self.layer.cornerRadius = 22
         
-        let stackView = UIStackView(arrangedSubviews: [otherPlaylistLabel, downIcon])
+        let stackView = UIStackView(arrangedSubviews: [otherPlaylistLabel, arrowIcon])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 0
 //        stackView.distribution = .fillProportionally
@@ -41,9 +42,9 @@ class OtherPlaylistButton: UIView {
     }
     
     fileprivate func setupIcon() {
-        downIcon.setImage(UIImage(named: "downArrowWhite"), for: .normal)
-        downIcon.contentMode = .scaleAspectFit
-        downIcon.translatesAutoresizingMaskIntoConstraints = false
+        arrowIcon.setImage(UIImage(named: "rightArrowWhite"), for: .normal)
+        arrowIcon.contentMode = .scaleAspectFit
+        arrowIcon.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -25,7 +25,8 @@ class HotTenPlaylistVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.separatorStyle = .none
+
         navigationItem.title = "Hot 10"
         
         // self.clearsSelectionOnViewWillAppear = false

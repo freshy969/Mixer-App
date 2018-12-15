@@ -131,7 +131,6 @@ class Song {
     func saveCustomPlaylistSong(user: MusicUser, playlist: Playlist, completed: @escaping (Bool) -> ()) {
         
         user.documentID = (Auth.auth().currentUser?.uid)!
-        
         let db = Firestore.firestore()
         
         let dataToSave = self.dictionary

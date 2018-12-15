@@ -28,6 +28,7 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
         selectedPlaylist = data
         otherPlaylistLabel.otherPlaylistLabel.setTitle(selectedPlaylist.name, for: .normal)
         otherButtonClicked = true
+        otherPlaylistLabel.arrowIcon.setImage(nil, for: .normal)
     }
     
     let playlistInstructionLabel: UILabel = {
@@ -84,7 +85,7 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
     
     let quitIcon: UIButton = {
         let iv = UIButton()
-        iv.setImage(UIImage(named: "quitBlack"), for: .normal)
+        iv.setImage(UIImage(named: "quitWhite"), for: .normal)
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.addTarget(self, action: #selector(handleQuit), for: .touchUpInside)
@@ -139,8 +140,9 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
         setupTapGesture()
-        print(selectedPlaylist?.name ?? "")
+        handleViewInput()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -151,7 +153,7 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleOtherTap))
         otherPlaylistLabel.addGestureRecognizer(tap)
         otherPlaylistLabel.otherPlaylistLabel.addTarget(self, action: #selector(handleOtherTap), for: .touchUpInside)
-        otherPlaylistLabel.downIcon.addTarget(self, action: #selector(handleOtherTap), for: .touchUpInside)
+        otherPlaylistLabel.arrowIcon.addTarget(self, action: #selector(handleOtherTap), for: .touchUpInside)
     }
     
     @objc fileprivate func handleAddSong() {
@@ -213,7 +215,6 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
     fileprivate func fetchCurrentUser() {
         // fetch some Firestore Data
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        user.documentID = uid
         Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, err) in
             if let err = err {
                 print(err)
@@ -241,7 +242,7 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
         self.hot10PlaylistLabel.setTitleColor(.white, for: .normal)
         otherPlaylistLabel.backgroundColor = UIColor.lightText
         otherPlaylistLabel.otherPlaylistLabel.setTitleColor(.white, for: .normal)
-        otherPlaylistLabel.downIcon.setImage(UIImage(named: "downArrowWhite"), for: .normal)
+        otherPlaylistLabel.arrowIcon.setImage(UIImage(named: "rightArrowWhite"), for: .normal)
         // playlist chosen = .text
     }
     
@@ -256,7 +257,7 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
         self.top10PlaylistLabel.setTitleColor(.white, for: .normal)
         otherPlaylistLabel.backgroundColor = UIColor.lightText
         otherPlaylistLabel.otherPlaylistLabel.setTitleColor(.white, for: .normal)
-        otherPlaylistLabel.downIcon.setImage(UIImage(named: "downArrowWhite"), for: .normal)
+        otherPlaylistLabel.arrowIcon.setImage(UIImage(named: "rightArrowWhite"), for: .normal)
     }
     
     @objc fileprivate func handleOtherTap() {
@@ -265,9 +266,10 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
         handleOtherButton()
         hot10buttonClicked = false
         top10ButtonClicked = false
+        handleViewInput()
         otherPlaylistLabel.backgroundColor = .white
         otherPlaylistLabel.otherPlaylistLabel.setTitleColor(.black, for: .normal)
-        otherPlaylistLabel.downIcon.setImage(UIImage(named: "downArrowBlack"), for: .normal)
+        otherPlaylistLabel.arrowIcon.setImage(UIImage(named: "rightArrowBlack"), for: .normal)
         self.top10PlaylistLabel.backgroundColor = UIColor.lightText
         self.top10PlaylistLabel.setTitleColor(.white, for: .normal)
         self.hot10PlaylistLabel.backgroundColor = UIColor.lightText
@@ -277,7 +279,7 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
     fileprivate func handleOtherButton() {
         let selectPlaylistController = SelectPlaylistVC()
         selectPlaylistController.delegate = self
-        present(selectPlaylistController, animated: true)
+        self.navigationController?.pushViewController(selectPlaylistController, animated: true)
     }
     
     @objc fileprivate func handleTapDismiss() {
@@ -286,10 +288,6 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
     
     fileprivate func setupView() {
         navigationItem.title = "Add a Song"
-        
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
         
         view.addSubview(quitIcon)
         quitIcon.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)

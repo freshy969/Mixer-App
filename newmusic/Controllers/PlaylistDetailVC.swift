@@ -23,6 +23,7 @@ class PlaylistDetailVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.title = "Top 10"
         
         if #available(iOS 11.0, *) {
