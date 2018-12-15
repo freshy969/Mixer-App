@@ -7,30 +7,88 @@
 //
 
 import UIKit
+import Firebase
+import SDWebImage
 
-class PlaylistDetailVC: UITableViewController {
+protocol receivePlaylist {
+    func pass(data: Playlist)
+}
+
+class PlaylistDetailVC: UITableViewController, receivePlaylist {
 
     let customHeaderView = CustomPlaylistHeaderView()
+    var selectedPlaylist: Playlist!
     
-    let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .lightGray
-        label.font = UIFont.boldSystemFont(ofSize: 32)
-        label.text = "Your Favorite Songs of All Time".uppercased()
-        label.numberOfLines = 0
-        return label
-    }()
+    let rightBarButton = UIButton()
+    
+    func pass(data: Playlist) {
+        // set up the button text
+        selectedPlaylist = data
+        // will need to fetch user in viewdidload too
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.separatorStyle = .none
         
-        navigationItem.title = "Top 10"
+        setupNavBarItems()
+        self.tableView.register(PlaylistDetailTableViewCell.self, forCellReuseIdentifier: "PlaylistCell")
+        loadUserPhotos()
+        songs = Songs()
+        fetchCurrentUser()
+    }
+    
+    fileprivate func setupNavBarItems() {
+        navigationItem.title = selectedPlaylist.name
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
+    }
+    
+    var user: MusicUser!
+    var songs: Songs!
+    
+    fileprivate func getPlaylistSongs() {
         
-        self.tableView.register(PlaylistDetailTableViewCell.self, forCellReuseIdentifier: "PlaylistCell")
+        self.songs.loadCustomPlaylistSongs(user: self.user, playlist: selectedPlaylist) {
+            self.tableView.reloadData()
+        }
+    }
+    
+    fileprivate func fetchCurrentUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, err) in
+            if let err = err {
+                print(err)
+                return
+            }
+            
+            // fetched our user here
+            guard let dictionary = snapshot?.data() else { return }
+            self.user = MusicUser(dictionary: dictionary)
+            self.configureHeader()
+            self.getPlaylistSongs()
+            self.tableView.reloadData()
+        }
+    }
+    
+    fileprivate func loadUserPhotos() {
+        // to cache the photos
+        guard let imageUrl = user?.profileURL, let url = URL(string: imageUrl) else { return }
+        SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: nil) { (image, _, _, _, _, _) in
+            self.customHeaderView.profileImageView.image = image?.withRenderingMode(.alwaysOriginal) ?? UIImage(named: "")
+        }
+    }
+    
+    fileprivate func configureHeader() {
+        let imageName = self.user?.profileURL ?? ""
+        if let url = URL(string: imageName) {
+            customHeaderView.profileImageView.sd_setImage(with: url)
+        } else {
+            // return the default image
+        }
+        customHeaderView.playlistDesc.text = "A PLAYLIST BY \(user?.fullName.uppercased() ?? "USER")"
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -42,12 +100,13 @@ class PlaylistDetailVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.songs.customPlaylistSongArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistDetailTableViewCell
-        //        cell.textLabel!.text = subtitleLabel.text!
+        cell.songNameLabel.text = self.songs.customPlaylistSongArray[indexPath.row].name
+        cell.artistNameLabel.text = self.songs.customPlaylistSongArray[indexPath.row].artist
         return cell
     }
     

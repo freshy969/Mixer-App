@@ -13,13 +13,16 @@ class PlaylistListVC: UITableViewController {
     
     var user: MusicUser!
     var playlist: Playlist!
+    var selectedPlaylist: Playlist!
     var playlists: Playlists!
+    
+    var delegate: receivePlaylist!
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
         label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.text = "Your Playlists"
+        label.text = "Playlists"
         label.textAlignment = .center
         return label
     }()
@@ -47,6 +50,10 @@ class PlaylistListVC: UITableViewController {
         }
         playlists = Playlists()
         fetchCurrentUser()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // will need to call loadCustomPlaylistSongs in order to get the number of songs displayed before view appears
     }
     
     fileprivate func setupNavBarItems() {
@@ -129,7 +136,7 @@ class PlaylistListVC: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         label.backgroundColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         
         if section == 0 {
             label.text = "  Your Droplists"
@@ -155,6 +162,25 @@ class PlaylistListVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                // push top10
+            } else {
+                // push hot10
+            }
+        }
+        
+        if indexPath.section == 1 {
+            selectedPlaylist = playlists.playlistArray[indexPath.row]
+            print(selectedPlaylist.name)
+            
+            let selectedPlaylistController = PlaylistDetailVC()
+            delegate = selectedPlaylistController
+            delegate.pass(data: selectedPlaylist)
+            self.navigationController?.pushViewController(selectedPlaylistController, animated: true)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

@@ -16,32 +16,44 @@ class TopTenPlaylistVC: UITableViewController {
     
     let customHeaderView = CustomPlaylistHeaderView()
     
-    let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .lightGray
-        label.font = UIFont.boldSystemFont(ofSize: 32)
-        label.text = "Your Favorite Songs of All Time".uppercased()
-        label.numberOfLines = 0
-        return label
-    }()
+    let rightBarButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
-
-        navigationItem.title = "Top 10"
         
         // self.clearsSelectionOnViewWillAppear = false
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-            
+        setupNavBarItems()
         self.tableView.register(PlaylistDetailTableViewCell.self, forCellReuseIdentifier: "PlaylistCell")
         loadUserPhotos()
         songs = Songs()
         fetchCurrentUser()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    fileprivate func setupNavBarItems() {
+        navigationItem.title = "Top 10"
+        
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
+        
+        rightBarButton.setTitle("Edit", for: .normal)
+        rightBarButton.setTitleColor(.blue, for: .normal)
+//        rightBarButton.addTarget(self, action: #selector(editBarButtonPressed), for: .touchUpInside)
+        navigationController?.navigationBar.addSubview(rightBarButton)
+        rightBarButton.tag = 1
+        rightBarButton.frame = CGRect(x: self.view.frame.width, y: 0, width: 120, height: 20)
+        
+        let targetView = self.navigationController?.navigationBar
+        
+        let trailingContraint = NSLayoutConstraint(item: rightBarButton, attribute:
+            .trailingMargin, relatedBy: .equal, toItem: targetView,
+                             attribute: .trailingMargin, multiplier: 1.0, constant: -16)
+        let bottomConstraint = NSLayoutConstraint(item: rightBarButton, attribute: .bottom, relatedBy: .equal,
+                                                  toItem: targetView, attribute: .bottom, multiplier: 1.0, constant: -10)
+        rightBarButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([trailingContraint, bottomConstraint])
     }
     
     var user: MusicUser!
