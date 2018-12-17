@@ -80,7 +80,7 @@ class Songs {
                 self.customPlaylistSongArray.append(song)
                 self.selectedPlaylist.numberOfSongs += 1
             }
-            self.addNumberOfSongs()
+//            self.addNumberOfSongs()
             completed()
         }
     }

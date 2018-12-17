@@ -31,9 +31,11 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         
         tableView.separatorStyle = .none
         self.tableView.register(TimelineTableViewCell.self, forCellReuseIdentifier: "cellId")
+        self.tableView.register(NewsfeedHeaderCell.self, forCellReuseIdentifier: "headerCellId")
         songs = Songs()
         fetchCurrentUser()
-        setupNavigationBarItems()
+        navigationController?.isNavigationBarHidden = true
+//        setupNavigationBarItems()
     }
     
     @objc func handleOpen() {
@@ -58,9 +60,9 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         let customView = UIButton(type: .system)
         customView.addTarget(self, action: #selector(handleOpen), for: .touchUpInside)
         
-        let imageName = self.user?.profileURL ?? ""
-        let url = URL(string: imageName)
-        customView.sd_setBackgroundImage(with: url, for: .normal)
+        let imageName = self.user?.profileURL ?? "" //
+        let url = URL(string: imageName) //
+        customView.sd_setBackgroundImage(with: url, for: .normal) //
         
         customView.imageView?.contentMode = .scaleAspectFit
         
@@ -118,7 +120,7 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
             
             self.getPlaylistSongs()
             self.tableView.reloadData() // need to reload table one more time
-            self.setupCircularNavigationButton()
+//            self.setupCircularNavigationButton()
         }
     }
 
@@ -136,28 +138,43 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! TimelineTableViewCell
-        cell.selectionStyle = .none
-
-        let imageName = self.user?.profileURL ?? ""
-        if let url = URL(string: imageName) {
-            cell.card.profilePictureButton.sd_setImage(with: url, for: .normal)
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCellId", for: indexPath) as! NewsfeedHeaderCell
+            cell.selectionStyle = .none
+            cell.customView.addTarget(self, action: #selector(handleOpen), for: .touchUpInside)
+            
+            let imageName = self.user?.profileURL ?? "" //
+            let url = URL(string: imageName) //
+            cell.customView.sd_setBackgroundImage(with: url, for: .normal) //
+            
+            cell.customView.imageView?.contentMode = .scaleAspectFit
+            
+            cell.customView.layer.cornerRadius = 35 / 2
+            cell.customView.clipsToBounds = true
+            return cell
         } else {
-            // return the default image
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! TimelineTableViewCell
+            cell.selectionStyle = .none
+            
+            let imageName = self.user?.profileURL ?? ""
+            if let url = URL(string: imageName) {
+                cell.card.profilePictureButton.sd_setImage(with: url, for: .normal)
+            } else {
+                // return the default image
+            }
+            // if profile picture is nil then show the placeholder image
+            // will need to create another view with an image inside of it so that the background can be the averageColor
+            cell.card.usernameButtonLabel.text = "@" + user.displayName
+            cell.card.playlistNameButtonLabel.text = playlistNameArray[indexPath.row].capitalized
+            
+            cell.card.songNameButtonLabel.text = songs.top10SongArray[indexPath.row].name
+            cell.card.artistNameButtonLabel.text = songs.top10SongArray[indexPath.row].artist
+            
+            cell.card.albumImage.image = UIImage(named: albumCoverArray[indexPath.row])
+            cell.card.likeTotalButtonLabel.text = "198 likes"
+            cell.card.applyAverageColor()
+            return cell
         }
-        // if profile picture is nil then show the placeholder image
-        // will need to create another view with an image inside of it so that the background can be the averageColor
-        cell.card.usernameButtonLabel.text = "@" + user.displayName.uppercased()
-        cell.card.playlistNameButtonLabel.text = playlistNameArray[indexPath.row].capitalized
-        
-        cell.card.songNameButtonLabel.text = songs.top10SongArray[indexPath.row].name
-        cell.card.artistNameButtonLabel.text = songs.top10SongArray[indexPath.row].artist
-
-        cell.card.albumImage.image = UIImage(named: albumCoverArray[indexPath.row])
-        cell.card.likeTotalButtonLabel.text = "198 likes"
-        cell.card.applyAverageColor()
-
-        return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -165,6 +182,10 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 485
+        if indexPath.row == 0 {
+            return 70
+        } else {
+            return 470
+        }
     }
 }

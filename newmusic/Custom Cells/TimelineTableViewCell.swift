@@ -23,7 +23,7 @@ class TimelineTableViewCell: UITableViewCell {
     
     fileprivate func setupCard() {
         addSubview(card)
-        
         card.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 10, paddingRight: 20, width: 0, height: 450)
+        card.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 }

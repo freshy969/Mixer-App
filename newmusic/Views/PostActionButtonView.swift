@@ -20,8 +20,9 @@ class PostActionButtonView: ActionButtonBackgroundView {
     }
     
     func setupViewComponents() {
-        self.layer.cornerRadius = 30 / 2
+        self.layer.cornerRadius = 35 / 2
         self.clipsToBounds = true
+        self.backgroundColor = .white
     }
     
     func setupButtonComponents() {
