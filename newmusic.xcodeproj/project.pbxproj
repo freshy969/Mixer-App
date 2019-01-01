@@ -25,6 +25,8 @@
 		D8628A6B21C2323800547415 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8628A6A21C2323800547415 /* Playlist.swift */; };
 		D8628A6D21C2A7C400547415 /* Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8628A6C21C2A7C400547415 /* Playlists.swift */; };
 		D8628A7021C2B48900547415 /* AddOtherPlaylistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8628A6F21C2B48900547415 /* AddOtherPlaylistButton.swift */; };
+		D873EC1521CC836B00D9D985 /* PresentPlaylistAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873EC1421CC836B00D9D985 /* PresentPlaylistAnimationController.swift */; };
+		D873EC1721CC849900D9D985 /* NewsfeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873EC1621CC849900D9D985 /* NewsfeedDetailViewController.swift */; };
 		D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDEC421AE56540007ACBC /* MenuVC.swift */; };
 		D87FDED221AEEC3A0007ACBC /* CustomMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */; };
 		D87FDED421AEF0DF0007ACBC /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87FDED321AEF0DF0007ACBC /* SpacerView.swift */; };
@@ -42,7 +44,6 @@
 		D8A0977721B35CFB00975E54 /* SignUpButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0977621B35CFB00975E54 /* SignUpButtonView.swift */; };
 		D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB800721ADC9BE0045DD14 /* Extensions.swift */; };
 		D8CA147C21C76898006E12BF /* NewsfeedHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CA147B21C76898006E12BF /* NewsfeedHeaderCell.swift */; };
-		D8CA147F21C772B1006E12BF /* PresentStoryViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CA147E21C772B1006E12BF /* PresentStoryViewAnimationController.swift */; };
 		D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */; };
 		D8E0745D21B032A200B47951 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0745C21B032A200B47951 /* HomeVC.swift */; };
 		D8E0745F21B0359E00B47951 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0745E21B0359E00B47951 /* Card.swift */; };
@@ -77,6 +78,8 @@
 		D8628A6A21C2323800547415 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		D8628A6C21C2A7C400547415 /* Playlists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlists.swift; sourceTree = "<group>"; };
 		D8628A6F21C2B48900547415 /* AddOtherPlaylistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOtherPlaylistButton.swift; sourceTree = "<group>"; };
+		D873EC1421CC836B00D9D985 /* PresentPlaylistAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentPlaylistAnimationController.swift; sourceTree = "<group>"; };
+		D873EC1621CC849900D9D985 /* NewsfeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedDetailViewController.swift; sourceTree = "<group>"; };
 		D87FDEC421AE56540007ACBC /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		D87FDED121AEEC3A0007ACBC /* CustomMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuHeaderView.swift; sourceTree = "<group>"; };
 		D87FDED321AEF0DF0007ACBC /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
@@ -94,7 +97,6 @@
 		D8A0977621B35CFB00975E54 /* SignUpButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpButtonView.swift; sourceTree = "<group>"; };
 		D8AB800721ADC9BE0045DD14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D8CA147B21C76898006E12BF /* NewsfeedHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedHeaderCell.swift; sourceTree = "<group>"; };
-		D8CA147E21C772B1006E12BF /* PresentStoryViewAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentStoryViewAnimationController.swift; sourceTree = "<group>"; };
 		D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		D8E0745C21B032A200B47951 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D8E0745E21B0359E00B47951 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -241,7 +243,8 @@
 		D8CA147D21C7729D006E12BF /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				D8CA147E21C772B1006E12BF /* PresentStoryViewAnimationController.swift */,
+				D873EC1421CC836B00D9D985 /* PresentPlaylistAnimationController.swift */,
+				D873EC1621CC849900D9D985 /* NewsfeedDetailViewController.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -267,12 +270,12 @@
 		D8F076CD219F841200E08006 /* newmusic */ = {
 			isa = PBXGroup;
 			children = (
+				D8F076CE219F841200E08006 /* AppDelegate.swift */,
 				D8CA147D21C7729D006E12BF /* Animation */,
 				D88CB73D21B3A86F008537BA /* Models */,
 				D87FDED021AEEC1A0007ACBC /* Views */,
 				D87FDEC321AE562A0007ACBC /* Controllers */,
 				D87FDEC621AE56A40007ACBC /* Custom Cells */,
-				D8F076CE219F841200E08006 /* AppDelegate.swift */,
 				D8F076D2219F841200E08006 /* Main.storyboard */,
 				D8F076D5219F841300E08006 /* Assets.xcassets */,
 				D8AB800621ADC9A90045DD14 /* Utils */,
@@ -370,11 +373,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-newmusic/Pods-newmusic-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -444,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D873EC1521CC836B00D9D985 /* PresentPlaylistAnimationController.swift in Sources */,
 				D896614221B3D0D200136804 /* RegistrationVC.swift in Sources */,
 				D8628A6921C2122500547415 /* PlaylistListTableViewCell.swift in Sources */,
 				D8E5EFD021B5A65B00CD4B0C /* PlaylistDetailVC.swift in Sources */,
@@ -471,6 +475,7 @@
 				D8071E9A21B4FCEB0078AD3D /* LoginVC.swift in Sources */,
 				D8628A6D21C2A7C400547415 /* Playlists.swift in Sources */,
 				D8071E9621B4953B0078AD3D /* AlbumCollageView.swift in Sources */,
+				D873EC1721CC849900D9D985 /* NewsfeedDetailViewController.swift in Sources */,
 				D8628A6B21C2323800547415 /* Playlist.swift in Sources */,
 				D8071E8E21B46C730078AD3D /* RegistrationStep2VC.swift in Sources */,
 				D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */,
@@ -479,7 +484,6 @@
 				D8840D7621B25FD100B858CD /* DetailMenuVC.swift in Sources */,
 				D851302E21B0F9690031FDF4 /* BaseSlidingVC.swift in Sources */,
 				D8E5EFD221B5A71B00CD4B0C /* TopTenVC.swift in Sources */,
-				D8CA147F21C772B1006E12BF /* PresentStoryViewAnimationController.swift in Sources */,
 				D84C62CA21C59509000F695F /* CardCell.swift in Sources */,
 				D87FDEC521AE56540007ACBC /* MenuVC.swift in Sources */,
 				D8628A6721C1DF2800547415 /* PlaylistListVC.swift in Sources */,

@@ -78,6 +78,11 @@ class Card: UIView {
         sendButton.buttonIcon.setImage(UIImage(named: "sendWhite")?.withRenderingMode(.alwaysOriginal), for: .normal)
         playButton.buttonIcon.setImage(UIImage(named: "playButtonWhite")?.withRenderingMode(.alwaysOriginal), for: .normal)
         
+        addButton.layer.opacity = 0.85
+        queueButton.layer.opacity = 0.85
+        sendButton.layer.opacity = 0.85
+        playButton.layer.opacity = 0.85
+        
         profilePictureButton.contentMode = .scaleAspectFit
         profilePictureButton.layer.cornerRadius = 48 / 2
         profilePictureButton.clipsToBounds = true
@@ -87,6 +92,7 @@ class Card: UIView {
         albumImage.clipsToBounds = true
         albumImage.layer.shadowRadius = 10
         albumImage.layer.shadowOpacity = 0.35
+        albumImage.contentMode = .scaleAspectFill
 //        albumImage.layer.shadowColor = UIColor.gray.cgColor
     }
     
@@ -95,7 +101,7 @@ class Card: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 14
         self.backgroundColor = UIColor.white
-        self.layer.shadowRadius = 8
+        self.layer.shadowRadius = 10
         self.layer.shadowOpacity = 0.35
         self.layer.shadowColor = UIColor.black.cgColor
     }
@@ -142,16 +148,15 @@ class Card: UIView {
         
         albumImage.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         profilePictureButton.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 20, paddingBottom: 10, paddingRight: 50, width: 48, height: 48)
-        usernameButtonLabel.anchor(top: self.topAnchor, left: profilePictureButton.rightAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 245, height: 16)
+        usernameButtonLabel.anchor(top: self.topAnchor, left: profilePictureButton.rightAnchor, bottom: nil, right: nil, paddingTop: 19, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 245, height: 16)
         songNameButtonLabel.anchor(top: usernameButtonLabel.bottomAnchor, left: profilePictureButton.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 245, height: 16)
         artistNameButtonLabel.anchor(top: songNameButtonLabel.bottomAnchor, left: profilePictureButton.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 245, height: 16)
 //        playlistNameButtonLabel.anchor(top: usernameButtonLabel.bottomAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 50, width: 246, height: 27)
         addButton.anchor(top: nil, left: self.leftAnchor, bottom: self.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: -15, paddingRight: 5, width: 35, height: 35)
         queueButton.anchor(top: nil, left: addButton.rightAnchor, bottom: self.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: -15, paddingRight: 5, width: 35, height: 35)
         sendButton.anchor(top: nil, left: queueButton.rightAnchor, bottom: self.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: -15, paddingRight: 5, width: 35, height: 35)
-//        likeTotalButtonLabel.anchor(top: albumImage.bottomAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 48, paddingLeft: 5, paddingBottom: 0, paddingRight: 20, width: 70, height: 17)
+        likeTotalButtonLabel.anchor(top: self.topAnchor, left: nil, bottom: nil, right: self.rightAnchor, paddingTop: 19, paddingLeft: 5, paddingBottom: 0, paddingRight: 20, width: 70, height: 17)
         playButton.anchor(top: nil, left: nil, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -15, paddingRight: 20, width: 35, height: 35)
-
     }
     
     // MARK: - Gesture Recognizer
@@ -188,6 +193,7 @@ class Card: UIView {
     }
     
     private func handleLongPressEnded() {
+        print("Liked")
         guard isPressed else {
             return
         }
@@ -208,7 +214,7 @@ class Card: UIView {
     
     fileprivate func setupGradientLayer() {
         gradientLayer.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradientLayer.locations = [-0.85, 1.40]
+        gradientLayer.locations = [-1.50, 1.50]
         gradientLayer.cornerRadius = 14
         gradientLayer.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         albumImage.layer.addSublayer(gradientLayer)

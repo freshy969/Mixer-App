@@ -85,7 +85,7 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
     
     let quitIcon: UIButton = {
         let iv = UIButton()
-        iv.setImage(UIImage(named: "quitWhite"), for: .normal)
+        iv.setImage(UIImage(named: "light-close-button"), for: .normal)
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.addTarget(self, action: #selector(handleQuit), for: .touchUpInside)
@@ -290,7 +290,7 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
         navigationItem.title = "Add a Song"
         
         view.addSubview(quitIcon)
-        quitIcon.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
+        quitIcon.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 27.5, height: 27.5)
         
         setupStackView()
     }

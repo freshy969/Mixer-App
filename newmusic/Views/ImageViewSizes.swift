@@ -60,7 +60,7 @@ class PlaylistAlbumCollageLeftView: UIImageView {
 class ActionButtonImageView: UIButton {
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 14, height: 14)
+        return CGSize(width: 12, height: 12)
     }
 }
 

@@ -41,7 +41,7 @@ class OffCenteredActionButtonView: UIView {
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 7, left: 9, bottom: 7, right: 7)
+        stackView.layoutMargins = UIEdgeInsets(top: 9, left: 10, bottom: 9, right: 8)
     }
     
     required init?(coder aDecoder: NSCoder) {

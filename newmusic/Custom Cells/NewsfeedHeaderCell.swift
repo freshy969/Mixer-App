@@ -24,7 +24,7 @@ class NewsfeedHeaderCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 24, weight: .heavy)
-        label.text = "Your New Music"
+        label.text = "New Drops"
         label.numberOfLines = 0
         label.textAlignment = .left
         return label

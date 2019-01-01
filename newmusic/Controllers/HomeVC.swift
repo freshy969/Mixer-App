@@ -21,7 +21,7 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     var totalSongAray: [Song] = []
 //    var songArray = ["Divide", "No Problem", "Winnebago", "Some Odesza Song", "Closer", "Some Odesza Song"]
 //    var artistArray = ["Odesza", "Chance the Rapper", "Gryffin", "Odesza", "The Chainsmokers", "Odesza"]
-    var albumCoverArray = ["odesza", "chance", "winn", "odesza2", "chainsmokers", "odesza3", "odesza", "chance", "winn", "odesza2", "chainsmokers", "odesza3", "odesza", "chance", "winn", "odesza2", "chainsmokers", "odesza3"]
+    var albumCoverArray = ["drake", "chance", "winn", "moon", "led", "wave", "pink", "drake", "chance", "winn", "moon", "led", "wave", "pink"]
     
     let menuController = MenuVC()
     fileprivate let menuWidth: CGFloat = 300
@@ -133,7 +133,7 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.top10SongArray.count
+        return (songs.top10SongArray.count) + 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -151,6 +151,9 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
             
             cell.customView.layer.cornerRadius = 35 / 2
             cell.customView.clipsToBounds = true
+            
+            cell.welcomeTitle.text = "Welcome, \(self.user?.firstName ?? "")"
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! TimelineTableViewCell
@@ -165,12 +168,17 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
             // if profile picture is nil then show the placeholder image
             // will need to create another view with an image inside of it so that the background can be the averageColor
             cell.card.usernameButtonLabel.text = "@" + user.displayName
-            cell.card.playlistNameButtonLabel.text = playlistNameArray[indexPath.row].capitalized
+            cell.card.playlistNameButtonLabel.text = playlistNameArray[indexPath.row - 1].capitalized
             
-            cell.card.songNameButtonLabel.text = songs.top10SongArray[indexPath.row].name
-            cell.card.artistNameButtonLabel.text = songs.top10SongArray[indexPath.row].artist
+            cell.card.songNameButtonLabel.text = songs.top10SongArray[indexPath.row - 1].name
+            cell.card.artistNameButtonLabel.text = songs.top10SongArray[indexPath.row - 1].artist
             
-            cell.card.albumImage.image = UIImage(named: albumCoverArray[indexPath.row])
+            cell.card.albumImage.image = UIImage(named: albumCoverArray[indexPath.row - 1])
+            
+            // Grabbing the last of the array is irrelevant right now
+            // Need to grab time posted from db and first sort the array (in viewdidappear)
+            // Then once sorted we must take the most recent (will probably now be at the front of the sorted array)
+            
             cell.card.likeTotalButtonLabel.text = "198 likes"
             cell.card.applyAverageColor()
             return cell

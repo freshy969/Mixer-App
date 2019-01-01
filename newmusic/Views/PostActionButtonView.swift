@@ -43,7 +43,7 @@ class PostActionButtonView: ActionButtonBackgroundView {
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 7, left: 7, bottom: 7, right: 7)
+        stackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     
     required init?(coder aDecoder: NSCoder) {
