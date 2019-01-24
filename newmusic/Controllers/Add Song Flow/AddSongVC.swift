@@ -111,9 +111,9 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
     }()
 
     
-    let addSongButton: UIButton = {
+    let nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Add Song", for: .normal)
+        button.setTitle("Next", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
         //        button.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
@@ -121,7 +121,7 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
         button.isEnabled = false
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.layer.cornerRadius = 22
-        button.addTarget(self, action: #selector(handleAddSong), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return button
     }()
 
@@ -156,15 +156,20 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
         otherPlaylistLabel.arrowIcon.addTarget(self, action: #selector(handleOtherTap), for: .touchUpInside)
     }
     
-    @objc fileprivate func handleAddSong() {
+    @objc fileprivate func handleNext() {
         // Need to fetch current user, then stuff the song in a new collection (playlist) in that user
         // store song
         
         if top10ButtonClicked == true {
             // Save song to Top 10 Playlist
             // Check to see how many songs are in playlist
+            
+            let currentTime = Date().toMillis()
             song.name = addSongTextField.text!
             song.artist = addArtistTextField.text!
+            song.dateAdded = currentTime!
+            
+//            if song.checkNumberOfSongs < 10 { still room to add a song so save the song  }
             self.song.saveTop10Song(user: self.user) { (success) in
 //                print(self.user?.dictionary)
             }
@@ -178,7 +183,6 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
             self.song.saveHot10Song(user: self.user) { (success) in
 //                print(self.user?.dictionary)
             }
-
             print("Saving song to hot 10...")
         }
         
@@ -209,14 +213,16 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
     }
     
     fileprivate func handleViewInput() {
-        let isFormValid = self.addSongTextField.text?.isEmpty != true && self.addArtistTextField.text?.isEmpty != true && (top10ButtonClicked == true || hot10buttonClicked == true || otherButtonClicked == true)
+        let isFormValid = self.addSongTextField.text?.isEmpty != true &&
+//            self.addArtistTextField.text?.isEmpty != true &&
+            (top10ButtonClicked == true || hot10buttonClicked == true || otherButtonClicked == true)
         
         if isFormValid {
-            self.addSongButton.isEnabled = true
-            self.addSongButton.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
+            self.nextButton.isEnabled = true
+            self.nextButton.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1)
         } else {
-            self.addSongButton.isEnabled = false
-            self.addSongButton.backgroundColor = UIColor.lightText
+            self.nextButton.isEnabled = false
+            self.nextButton.backgroundColor = UIColor.lightText
         }
     }
     
@@ -298,23 +304,23 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
         navigationItem.title = "Add a Song"
         
         view.addSubview(quitIcon)
-        quitIcon.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 27.5, height: 27.5)
+        quitIcon.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 50, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 27.5, height: 27.5)
         
         setupStackView()
     }
     
     lazy var stackView = UIStackView(arrangedSubviews: [
+        subtitleLabel,
+        SpacerViewHeight(space: 10),
+        addSongTextField,
+        SpacerViewHeight(space: 25),
         playlistInstructionLabel,
         SpacerViewHeight(space: 10),
         top10PlaylistLabel,
         hot10PlaylistLabel,
         otherPlaylistLabel,
-        SpacerViewHeight(space: 50),
-        subtitleLabel,
-        SpacerViewHeight(space: 10),
-        addSongTextField,
-        addArtistTextField,
-        addSongButton
+        SpacerViewHeight(space: 25),
+        nextButton
         ])
     
     fileprivate func setupStackView() {

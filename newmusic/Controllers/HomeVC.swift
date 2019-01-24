@@ -155,8 +155,7 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
             let url = URL(string: imageName) //
             cell.customView.sd_setBackgroundImage(with: url, for: .normal) //
             
-            cell.customView.imageView?.contentMode = .scaleAspectFit
-            
+            cell.customView.imageView?.contentMode = .scaleAspectFill
             cell.customView.layer.cornerRadius = 35 / 2
             cell.customView.clipsToBounds = true
             

@@ -15,23 +15,19 @@ class Song {
     var artist: String
     var playlist: String
     var albumImage: String //URL
-//    var dateAdded: Date
+    var dateAdded: Int64
     var documentID: String
     
     var dictionary: [String: Any] {
-        return ["name": name, "artist": artist, "playlist": playlist, "albumImage": albumImage,
-//                "dateAdded": dateAdded,
-                "documentID": documentID]
+        return ["name": name, "artist": artist, "playlist": playlist, "albumImage": albumImage, "dateAdded": dateAdded, "documentID": documentID]
     }
     
-    init(name: String, artist: String, playlist: String, albumImage: String,
-//         dateAdded: Date,
-         documentID: String) {
+    init(name: String, artist: String, playlist: String, albumImage: String, dateAdded: Int64, documentID: String) {
         self.name = name
         self.artist = artist
         self.playlist = playlist
         self.albumImage = albumImage
-//        self.dateAdded = dateAdded
+        self.dateAdded = dateAdded
         self.documentID = documentID
     }
     
@@ -41,22 +37,16 @@ class Song {
         let artist = dictionary["artist"] as! String? ?? ""
         let playlist = dictionary["playlist"] as! String? ?? ""
         let albumImage = dictionary["albumImage"] as! String? ?? ""
-//        let dateAdded = dictionary["dateAdded"] as! Date? ?? Date()
-        self.init(name: name, artist: artist, playlist: playlist, albumImage: albumImage,
-//                  dateAdded: dateAdded,
+        let dateAdded = dictionary["dateAdded"] as! Int64? ?? 0
+        self.init(name: name, artist: artist, playlist: playlist, albumImage: albumImage, dateAdded: dateAdded,
                   documentID: "")
     }
     
     convenience init() {
-        //        let currentUserID = Auth.auth().currentUser?.email ?? "Unknown User"
-        self.init(name: "", artist: "", playlist: "", albumImage: "",
-                  //                  reviewerUserID: currentUserID,
-//            dateAdded: Date(),
-            documentID: "")
+        self.init(name: "", artist: "", playlist: "", albumImage: "", dateAdded: 0, documentID: "")
     }
     
     func saveTop10Song(user: MusicUser, completed: @escaping (Bool) -> ()) {
-        
         
         user.documentID = (Auth.auth().currentUser?.uid)!
         

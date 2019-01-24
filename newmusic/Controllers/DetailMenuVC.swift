@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+@available(iOS 10.3, *)
 class DetailMenuVC: UIViewController {
     
     var user: MusicUser!

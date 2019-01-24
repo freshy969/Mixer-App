@@ -83,27 +83,24 @@ class Card: UIView {
         sendButton.layer.opacity = 0.85
         playButton.layer.opacity = 0.85
         
-        profilePictureButton.contentMode = .scaleAspectFit
+        profilePictureButton.contentMode = .scaleAspectFill
         profilePictureButton.layer.cornerRadius = 48 / 2
         profilePictureButton.clipsToBounds = true
         
         albumImage.layer.cornerRadius = 14
         albumImage.layer.masksToBounds = true
         albumImage.clipsToBounds = true
-        albumImage.layer.shadowRadius = 10
-        albumImage.layer.shadowOpacity = 0.35
         albumImage.contentMode = .scaleAspectFill
-//        albumImage.layer.shadowColor = UIColor.gray.cgColor
     }
     
     func setupCardComponents() {
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.layer.cornerRadius = 14
+        self.layer.cornerRadius = 15
         self.backgroundColor = UIColor.white
-        self.layer.shadowRadius = 10
-        self.layer.shadowOpacity = 0.35
-        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowRadius = 8
+        self.layer.shadowOpacity = 0.5
+//        self.layer.shadowColor = UIColor.black.cgColor
     }
     
 //    func setupPlaylistTapGesture() { // will need to take a string (playlist name) and open that playlist
@@ -125,8 +122,8 @@ class Card: UIView {
         queueButton.backgroundColor = averageColorFromImage
         sendButton.backgroundColor = averageColorFromImage
         playButton.backgroundColor = averageColorFromImage
-         profilePictureButton.backgroundColor = averageColorFromImage
-//        self.layer.shadowColor = averageColorFromImage.cgColor
+        profilePictureButton.backgroundColor = averageColorFromImage
+        self.layer.shadowColor = averageColorFromImage.cgColor
         albumImage.layer.shadowColor = averageColorFromImage.cgColor
     }
     
