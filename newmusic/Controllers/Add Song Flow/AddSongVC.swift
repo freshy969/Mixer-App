@@ -189,7 +189,15 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
             }
         }
         print("Song was Added")
+        
+        // close menu here so that new song in newsfeed shows
+        handleHide()
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func handleHide() {
+        (UIApplication.shared.keyWindow?.rootViewController as? BaseSlidingVC)?.closeMenu()
     }
     
     @objc fileprivate func handleQuit() {

@@ -50,11 +50,21 @@ class DetailMenuVC: UIViewController {
         showSettingsActionSheet()
     }
     
+    func handleHide() {
+        (UIApplication.shared.keyWindow?.rootViewController as? BaseSlidingVC)?.closeMenu()
+    }
+    
     func showSettingsActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let settingsAction = UIAlertAction(title: "Settings", style: .default) { (action) in
             print("Settings")
+        }
+        
+        let musicProviderAction = UIAlertAction(title: "Music Provider", style: .default) { (action) in
+            let providerController = SelectMusicProviderVC()
+            //        searchController.user = self.user
+            self.present(providerController, animated: true)
         }
         
         let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { (action) in
@@ -68,12 +78,16 @@ class DetailMenuVC: UIViewController {
                 let loginController = RegistrationVC()
                 let navContoller = UINavigationController(rootViewController: loginController)
                 self.present(navContoller, animated: true)
+                
+                // Close the menu here so menu is not showing when signed in
+                self.handleHide()
             }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         actionSheet.addAction(settingsAction)
+        actionSheet.addAction(musicProviderAction)
         actionSheet.addAction(logoutAction)
         actionSheet.addAction(cancelAction)
         
@@ -89,6 +103,7 @@ class DetailMenuVC: UIViewController {
         let searchController = SearchVC()
 //        searchController.user = self.user
         present(searchController, animated: true)
+        
     }
 }
 

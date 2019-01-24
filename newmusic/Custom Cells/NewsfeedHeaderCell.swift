@@ -14,7 +14,7 @@ class NewsfeedHeaderCell: UITableViewCell {
         let label = UILabel()
         label.textColor = UIColor.lightGray
         label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
-        label.text = "Welcome, Joe".uppercased()
+        label.text = "".uppercased()
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
@@ -24,7 +24,7 @@ class NewsfeedHeaderCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 24, weight: .heavy)
-        label.text = "New Drops"
+        label.text = "Your New Music"
         label.numberOfLines = 0
         label.textAlignment = .left
         return label

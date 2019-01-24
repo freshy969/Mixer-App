@@ -31,9 +31,6 @@ class HotTenPlaylistVC: UITableViewController {
     fileprivate func setupNavBarItems() {
         navigationItem.title = "Hot 10"
         
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
         
         rightBarButton.setTitle("Edit", for: .normal)
         rightBarButton.setTitleColor(.blue, for: .normal)

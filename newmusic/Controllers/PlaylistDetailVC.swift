@@ -40,10 +40,7 @@ class PlaylistDetailVC: UITableViewController, receivePlaylist {
     
     fileprivate func setupNavBarItems() {
         navigationItem.title = selectedPlaylist.name
-        
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
+    
     }
     
     var user: MusicUser!

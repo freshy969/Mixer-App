@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SDWebImage
+import JGProgressHUD
 
 class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     
@@ -25,6 +26,8 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
     
     let menuController = MenuVC()
     fileprivate let menuWidth: CGFloat = 300
+    
+    let loadingHUD = JGProgressHUD(style: .dark)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,15 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         fetchCurrentUser()
         navigationController?.isNavigationBarHidden = true
 //        setupNavigationBarItems()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadingHUD.show(in: view)
+        fetchCurrentUser()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadingHUD.dismiss(animated: true)
     }
     
     @objc func handleOpen() {
@@ -99,10 +111,6 @@ class HomeVC: UITableViewController, UIGestureRecognizerDelegate {
         self.songs.loadTop10SongData(user: self.user) {
             self.tableView.reloadData()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        fetchCurrentUser()
     }
     
     fileprivate func fetchCurrentUser() {

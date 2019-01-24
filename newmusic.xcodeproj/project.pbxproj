@@ -43,6 +43,7 @@
 		D8A0977121B3427D00975E54 /* HotTenPlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0977021B3427D00975E54 /* HotTenPlaylistVC.swift */; };
 		D8A0977721B35CFB00975E54 /* SignUpButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0977621B35CFB00975E54 /* SignUpButtonView.swift */; };
 		D8AB800821ADC9BE0045DD14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB800721ADC9BE0045DD14 /* Extensions.swift */; };
+		D8C99DBB21F97D9900EE3712 /* SelectMusicProviderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C99DBA21F97D9900EE3712 /* SelectMusicProviderVC.swift */; };
 		D8CA147C21C76898006E12BF /* NewsfeedHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CA147B21C76898006E12BF /* NewsfeedHeaderCell.swift */; };
 		D8DFC2D221ACF0C100710F0B /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */; };
 		D8E0745D21B032A200B47951 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0745C21B032A200B47951 /* HomeVC.swift */; };
@@ -96,6 +97,7 @@
 		D8A0977021B3427D00975E54 /* HotTenPlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotTenPlaylistVC.swift; sourceTree = "<group>"; };
 		D8A0977621B35CFB00975E54 /* SignUpButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpButtonView.swift; sourceTree = "<group>"; };
 		D8AB800721ADC9BE0045DD14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D8C99DBA21F97D9900EE3712 /* SelectMusicProviderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicProviderVC.swift; sourceTree = "<group>"; };
 		D8CA147B21C76898006E12BF /* NewsfeedHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedHeaderCell.swift; sourceTree = "<group>"; };
 		D8DFC2D121ACF0C100710F0B /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		D8E0745C21B032A200B47951 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				D8E5EFCF21B5A65B00CD4B0C /* PlaylistDetailVC.swift */,
 				D8840D6F21B2261D00B858CD /* QueueListVC.swift */,
 				D8840D7721B276C500B858CD /* SearchVC.swift */,
+				D8C99DBA21F97D9900EE3712 /* SelectMusicProviderVC.swift */,
 				D83D332F21B6CA6600DA2EC9 /* Add Song Flow */,
 			);
 			path = Controllers;
@@ -462,6 +465,7 @@
 				D84C62C821C579AF000F695F /* NewsfeedCollectionViewCell.swift in Sources */,
 				D8071E9021B482560078AD3D /* CustomPlaylistHeaderView.swift in Sources */,
 				D851302B21B0E7FF0031FDF4 /* OffCenteredActionButtonView.swift in Sources */,
+				D8C99DBB21F97D9900EE3712 /* SelectMusicProviderVC.swift in Sources */,
 				D87FDED421AEF0DF0007ACBC /* SpacerView.swift in Sources */,
 				D8840D7021B2261D00B858CD /* QueueListVC.swift in Sources */,
 				D85235B521BE30B300676217 /* MenuTabBarController.swift in Sources */,
