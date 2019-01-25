@@ -74,7 +74,7 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Share something cool"
+        label.text = "Add a Song"
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .center
@@ -92,9 +92,9 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
         return iv
     }()
     
-    let addSongTextField: CustomTextField = {
-        let tf = CustomTextField(padding: 18, height: 48)
-        tf.placeholder = "Add a Song"
+    let addSongTextField: CustomAddTextField = {
+        let tf = CustomAddTextField(padding: 18, height: 48)
+        tf.placeholder = "Search"
         tf.backgroundColor = .white
         tf.textAlignment = .center
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
@@ -209,6 +209,13 @@ class AddSongVC: UIViewController, isAbleToReceiveData {
     }
     
     @objc func handleTextInputChange() {
+        
+        if self.addSongTextField.text?.isEmpty != true {
+            addSongTextField.searchIcon.setImage(UIImage(named: "rightArrowRed"), for: .normal)
+        } else {
+            addSongTextField.searchIcon.setImage(UIImage(named: "rightArrowGray"), for: .normal)
+        }
+        
         handleViewInput()
     }
     

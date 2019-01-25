@@ -67,9 +67,47 @@ class SelectMusicProviderVC: UIViewController {
     @objc fileprivate func handleAppleMusic() {
         print("Apple Music Clicked")
         authorizeAppleMusic()
+        
+        guard SKCloudServiceController.authorizationStatus() == .authorized else {
+            print("Not Authorized")
+            return
+        }
+        
+        moreInformation()
+    }
+    
+    fileprivate func moreInformation() {
+        
+        let appleMusicManager = AppleMusicManager()
+        let authorizationManager = AuthorizationManager(appleMusicManager: appleMusicManager)
+        
+        let controller = SKCloudServiceController()
+        controller.requestCapabilities(completionHandler: { (cloudServiceCapability, error) in
+            guard error == nil else {
+                print("ERROR- Could not get more information about Apple Music Capability")
+                return
+                // Handle Error accordingly, see SKError.h for error codes.
+            }
+            
+            if authorizationManager.cloudServiceCapabilities.contains(.addToCloudMusicLibrary) {
+                // The application can add items to the iCloud Music Library.
+                print("1")
+            }
+            
+            if authorizationManager.cloudServiceCapabilities.contains(.musicCatalogPlayback) {
+                // The application can playback items from the Apple Music catalog.
+                print("2")
+            }
+            
+            if authorizationManager.cloudServiceCapabilities.contains(.musicCatalogSubscriptionEligible) {
+                // The iTunes Store account is currently elgible for and Apple Music Subscription trial.
+                print("3")
+            }
+        })
     }
     
     fileprivate func authorizeAppleMusic() {
+        
         let appleMusicManager = AppleMusicManager()
         let authorizationManager = AuthorizationManager(appleMusicManager: appleMusicManager)
         
@@ -82,7 +120,8 @@ class SelectMusicProviderVC: UIViewController {
             switch authorizationStatus {
             case .authorized:
                 authorizationManager.requestCloudServiceCapabilities()
-                authorizationManager.requestUserToken()
+//                authorizationManager.requestUserToken()
+                // Don't need this right now for search
             default:
                 break
             }
@@ -96,7 +135,5 @@ class SelectMusicProviderVC: UIViewController {
     @objc fileprivate func handleQuit() {
         dismiss(animated: true, completion: nil)
     }
-    
-    
 }
 
